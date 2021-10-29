@@ -1,0 +1,104 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Assertions;
+
+public class CharacterControl : MonoBehaviour
+{
+    private GameObject player;
+    private GameManager gameManager;
+
+    //Movement
+    [SerializeField] private float acceleration;        // How fast we do reach top speed
+    [SerializeField] private float slowingProportion;     // Defines how much faster the character slows down in comparation to speeding up
+    [SerializeField] private float slowingTime;         // Defines how long after the last click the caracter will start to slow down
+    [SerializeField] public float speed;               // Current speed of the character
+    [SerializeField] private float topSpeed;            // Highest possible speed of the character
+    [SerializeField] private bool go;                   // Checks if the character should run or slow down and stop
+    private float timeBeforeSlowing;                    // Clock 
+
+    //Camera position
+    [SerializeField] private Camera camera;
+    [SerializeField] private Vector3 cameraPosition;
+
+    //Physics
+    public Rigidbody rigidbody;
+
+    void Awake()
+    {
+        Assert.IsTrue(acceleration > 0);
+        Assert.IsTrue(slowingProportion>0);
+        Assert.IsTrue(slowingTime>0);
+        Assert.IsTrue(topSpeed > 0);
+    }
+
+    void Start()
+    {
+        player = this.gameObject;
+        gameManager = FindObjectOfType<GameManager>();
+        rigidbody = this.GetComponent<Rigidbody>();
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (!gameManager.defeat)        // Prevents the player from moving and stops him in place to take a shot
+        {
+            move();
+            accelerating();
+            cameraFollow();
+            rigidbody.isKinematic = true;
+        }
+        else
+        {
+            speed = 0;
+            go = false;
+            rigidbody.isKinematic = false;
+        }
+    }
+
+    private void move()
+    {
+        if (go)         // Signal that the character needs to get moving
+        {
+            if (speed < topSpeed)       // Linearly speeds up the character until it reaches max speed
+                speed += acceleration;
+            else
+                speed = topSpeed;       // Hold the character at max speed
+        }
+        else if (!go && speed > 0)      //Signals that the character needs start to slow down
+        {
+            if (speed <= topSpeed)      // Linearly slowes down the character. The slow is 
+                speed -= acceleration * slowingProportion;
+        }
+        else                            // If the speed goes below 0 it is set to 0
+        {
+            speed = 0;
+        }
+
+
+        player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + speed);     //Moves the character
+    }
+
+    private void accelerating()
+    {
+        timeBeforeSlowing += Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))       // Once the screeen is pressed go is set true. After timeBeforSlowing it is set to false
+        {
+            go = true;
+            timeBeforeSlowing = 0;
+        }
+        if (timeBeforeSlowing > slowingTime)
+        {
+            go = false;
+        }
+
+    }
+
+    private void cameraFollow()
+    {
+        camera.transform.position = cameraPosition+ player.transform.position;
+    }
+}
