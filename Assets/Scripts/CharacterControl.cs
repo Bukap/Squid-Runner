@@ -8,18 +8,20 @@ public class CharacterControl : MonoBehaviour
     private GameObject player;
     private GameManager gameManager;
 
-    //Movement
+    #region Movement
     [SerializeField] private float acceleration;        // How fast we do reach top speed
     [SerializeField] private float slowingProportion;     // Defines how much faster the character slows down in comparation to speeding up
     [SerializeField] private float slowingTime;         // Defines how long after the last click the caracter will start to slow down
-    [SerializeField] public float speed;               // Current speed of the character
+    [SerializeField] public float speed { get; set; }               // Current speed of the character
     [SerializeField] private float topSpeed;            // Highest possible speed of the character
     [SerializeField] private bool go;                   // Checks if the character should run or slow down and stop
     private float timeBeforeSlowing;                    // Clock 
+    #endregion
 
-    //Camera position
+    #region Camera position
     [SerializeField] private Camera camera;
     [SerializeField] private Vector3 cameraPosition;
+    #endregion
 
     //Physics
     public Rigidbody rigidbody;
@@ -97,8 +99,8 @@ public class CharacterControl : MonoBehaviour
 
     }
 
-    private void cameraFollow()
+    private void cameraFollow()     //Makes the camera follow the player
     {
-        camera.transform.position = cameraPosition+ player.transform.position;
+        camera.transform.position = cameraPosition + player.transform.position;
     }
 }

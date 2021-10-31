@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Watcher : MonoBehaviour
 {
-    [SerializeField] private GameObject character;
+    [SerializeField] private GameObject character;      
 
     [SerializeField] private float rotationSpeed;
 
@@ -12,7 +12,7 @@ public class Watcher : MonoBehaviour
 
     private GameManager gameManager;
 
-    public bool isWatching;
+    public bool isWatching { get; set; }
 
     void Start()
     {

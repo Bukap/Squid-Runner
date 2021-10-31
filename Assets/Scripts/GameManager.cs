@@ -5,25 +5,30 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private Watcher watcher;
+
     private CharacterControl characterControl;
+    [SerializeField] private GameObject player;     //Pointing at the player character and accesing its class
+    [SerializeField] private GameObject[] characters;       //An array of all NPC characters
 
-    [SerializeField] private GameObject player;
-    [SerializeField] private GameObject[] characters;
+    #region Green Frequency
+    [SerializeField] private float shortestTime;    // Defines the shortest possible time before changing the green value
+    [SerializeField] private float longestTime;     // Defines the longest possible time before changing the green value
+    [SerializeField] private float timeToSwitch;    // It is the value of the randomly generated number between the two abowe
+    [SerializeField] private float timer;           // The clock that is counted up to the timeToSwitch, then it resets and the timeToSwitch value is generated again
+    #endregion
+    [SerializeField] public bool green { get; set; }        // Defines if the characters can move without lousing
+    
+    [SerializeField] public bool defeat { get; set; }       // Defines if the players character has been defeated
+    
+    #region Ball
+    [SerializeField] private GameObject ballPrefab;         // Stores the prefab of the ball
+    [SerializeField] private GameObject ball;               // Creates a clone of the ballPrefab
+    [SerializeField] private float distance;                // Defines how far on the x axis the ball is created
+    #endregion
 
-    [SerializeField] private float shortestTime;
-    [SerializeField] private float longestTime;
-    [SerializeField] private float timeToSwitch;
-    [SerializeField] private float timer;
+    [SerializeField] private Transform restartPosition;     // Defines where the starting point for the player is for every gameloop
+    [SerializeField] private float countDown;               // Defines after how many seconds after pressing the restart button the game will reset
 
-    [SerializeField] public bool green;
-
-    [SerializeField] public bool defeat;
-
-    [SerializeField] private GameObject ballPrefab;
-    [SerializeField] private GameObject ball;
-    [SerializeField] private float distance;
-    [SerializeField] private Transform restartPosition;
-    [SerializeField] private float countDown;
     void Start()
     {
         watcher = FindObjectOfType<Watcher>();
@@ -41,7 +46,7 @@ public class GameManager : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer > timeToSwitch)
+        if (timer > timeToSwitch)               
         {
             if (green)
                 green = false;
@@ -51,19 +56,19 @@ public class GameManager : MonoBehaviour
             timeToSwitch = Random.Range(shortestTime, longestTime);
             timer = 0;
         }
-    }
+    }       // Every randomly generated amount of time the boolerian value of green changes to the oposite, resets the timer and generates a new amount of time
 
     private void gameOver()
     {
-        if(characterControl.speed>0 && watcher.isWatching)
+        if(characterControl.speed>0 && watcher.isWatching && !defeat)
         {
             defeat = true;
             ball = Instantiate(ballPrefab);
             ball.transform.position = player.transform.position + (new Vector3(distance,0));
         }
-    }
+    }       // If !green and the player moves the defeat bool is set to true and a ball is created that hits the player
 
-    IEnumerator startRestartTimer()
+    IEnumerator startRestartTimer()         // After the countDown amount of seconds the gameloop resets
     {
         yield return new WaitForSeconds(countDown);
         defeat = false;
@@ -72,8 +77,11 @@ public class GameManager : MonoBehaviour
         player.transform.rotation = restartPosition.rotation;
     } 
 
-    private void restart()
+    private void restart()              //Invokes the startRestartTimer function
     {
         StartCoroutine(startRestartTimer());
     }
+
+
+
 }
