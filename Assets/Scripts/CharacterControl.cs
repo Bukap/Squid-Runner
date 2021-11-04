@@ -42,10 +42,18 @@ public class CharacterControl : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (!gameManager.defeat)        // Prevents the player from moving and stops him in place to take a shot
+        if (!gameManager.defeat && !gameManager.finish)        // Needed to separate the accelerating to keep a steady framework and get the button pressed read
+        {
+            accelerating();
+        }
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        if (!gameManager.defeat && !gameManager.finish)        // Prevents the player from moving and stops him in place to take a shot
         {
             move();
             accelerating();
@@ -54,9 +62,10 @@ public class CharacterControl : MonoBehaviour
         }
         else
         {
-            speed = 0;
             go = false;
-            rigidbody.isKinematic = false;
+            speed = 0;
+            if (gameManager.defeat) 
+                rigidbody.isKinematic = false;
         }
     }
 
@@ -103,4 +112,17 @@ public class CharacterControl : MonoBehaviour
     {
         camera.transform.position = cameraPosition + player.transform.position;
     }
+
+    
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if(collision.tag == "Finish")
+        {
+            gameManager.Victory();
+        }
+    }
+
+
 }
+

@@ -27,7 +27,7 @@ public class ScoreManager : MonoBehaviour
 
     void Start()
     {
-        characterControl = GetComponent<CharacterControl>();
+        characterControl = FindObjectOfType<CharacterControl>();
     }
 
     void FixedUpdate()

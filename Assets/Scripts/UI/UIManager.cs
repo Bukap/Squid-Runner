@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject PressToStartPrefab;
     [SerializeField] private GameObject MainMenuPrefab;
     [SerializeField] private GameObject StartGamePrefab;
-    [SerializeField] private GameObject GameplayPrefab;
+    [SerializeField] private GameObject GamePlayPrefab;
     [SerializeField] private GameObject GameOverPrefab;
     [SerializeField] private GameObject VictoryPrefab;
     [SerializeField] private GameObject OptionsPrefab;
@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject PressToStartScreen;
     [SerializeField] private GameObject MainMenuScreen;
     [SerializeField] private GameObject StartGameScreen;
-    [SerializeField] private GameObject GameplayScreen;
+    [SerializeField] private GameObject GamePlayScreen;
     [SerializeField] private GameObject GameOverScreen;
     [SerializeField] private GameObject VictoryScreen;
     [SerializeField] private GameObject OptionsScreen;
@@ -32,6 +32,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         canvas = FindObjectOfType<Canvas>();
+        MainMenuScreen = Instantiate(MainMenuPrefab,canvas.transform);
     }
 
 
@@ -42,17 +43,15 @@ public class UIManager : MonoBehaviour
 
     }
 
-    public void DestroyAll()
+    public void StartGame()
     {
-        Destroy(PressToStartScreen);
-        Destroy(MainMenuScreen);
-        Destroy(StartGameScreen);
-        Destroy(GameplayScreen);
-        Destroy(GameOverScreen);
-        Destroy(VictoryScreen);
-        Destroy(OptionsScreen);
-        Destroy(ShopScreen);
-        Destroy(EquipmentScreen);
+
     }
 
+    public void DestroyAll()
+    {
+      
+    }
+
+    // Create all nesesery obcejts on the screen and handle whitch ones are visable at the moment
 }

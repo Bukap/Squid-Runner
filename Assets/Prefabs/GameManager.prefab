@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 848933355692079425}
   - component: {fileID: 848933355692079438}
+  - component: {fileID: 1809793844}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -47,9 +48,31 @@ MonoBehaviour:
   characters: []
   shortestTime: 4
   longestTime: 10
-  timeToSwitch: 6
+  timeToSwitch: 2
   timer: 0
-  green: 0
-  defeat: 0
+  ballPrefab: {fileID: 591428084686126781, guid: c8fa3d39c4aeafe4c984550e235f78d0, type: 3}
   ball: {fileID: 0}
-  distance: 0
+  distance: 20
+  hight: 3
+  restartPosition: {fileID: 0}
+  countDown: 3
+--- !u!114 &1809793844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848933355692079439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ab930a315bb044aa6ddf11f39a06c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalScore: 0
+  currentScore: 0
+  sprintMultiplier: 1
+  multiplierIncrease: 0.05
+  multiplierDecrease: 0.01
+  incrementValue: 1
+  increaseFrequency: 0.1
+  clock: 0

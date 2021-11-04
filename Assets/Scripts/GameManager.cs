@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     private Watcher watcher;
 
     private CharacterControl characterControl;
+    private ScoreManager scoreManager;
     [SerializeField] private GameObject player;     //Pointing at the player character and accesing its class
     [SerializeField] private GameObject[] characters;       //An array of all NPC characters
 
@@ -17,13 +18,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float timer;           // The clock that is counted up to the timeToSwitch, then it resets and the timeToSwitch value is generated again
     #endregion
     [SerializeField] public bool green { get; set; }        // Defines if the characters can move without lousing
-    
     [SerializeField] public bool defeat { get; set; }       // Defines if the players character has been defeated
+    [SerializeField] public bool finish { get; set; }
     
     #region Ball
     [SerializeField] private GameObject ballPrefab;         // Stores the prefab of the ball
     [SerializeField] private GameObject ball;               // Creates a clone of the ballPrefab
     [SerializeField] private float distance;                // Defines how far on the x axis the ball is created
+    [SerializeField] private float hight;                   // Defines how high on the y axis the ball is created
     #endregion
 
     [SerializeField] private Transform restartPosition;     // Defines where the starting point for the player is for every gameloop
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour
     {
         watcher = FindObjectOfType<Watcher>();
         characterControl = player.GetComponent<CharacterControl>();
+        scoreManager = FindObjectOfType<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -60,18 +63,25 @@ public class GameManager : MonoBehaviour
 
     private void gameOver()
     {
-        if(characterControl.speed>0 && watcher.isWatching && !defeat)
+        if(characterControl.speed>0 && watcher.isWatching && !defeat && !finish)
         {
             defeat = true;
             ball = Instantiate(ballPrefab);
-            ball.transform.position = player.transform.position + (new Vector3(distance,0));
+            ball.transform.position = player.transform.position + (new Vector3(distance,hight));
         }
     }       // If !green and the player moves the defeat bool is set to true and a ball is created that hits the player
+
+    public void Victory()
+    {
+        finish = true;
+        scoreManager.AddToTotalScore();
+    }
 
     IEnumerator startRestartTimer()         // After the countDown amount of seconds the gameloop resets
     {
         yield return new WaitForSeconds(countDown);
         defeat = false;
+        finish = false;
         Destroy(ball);
         player.transform.position = restartPosition.position;
         player.transform.rotation = restartPosition.rotation;
