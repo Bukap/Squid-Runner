@@ -1,56 +1,100 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class UIManager : MonoBehaviour
 {
-    private Canvas canvas;
-    #region Prefabs
-    [SerializeField] private GameObject PressToStartPrefab;
-    [SerializeField] private GameObject MainMenuPrefab;
-    [SerializeField] private GameObject StartGamePrefab;
-    [SerializeField] private GameObject GamePlayPrefab;
-    [SerializeField] private GameObject GameOverPrefab;
-    [SerializeField] private GameObject VictoryPrefab;
-    [SerializeField] private GameObject OptionsPrefab;
-    [SerializeField] private GameObject ShopPrefab;
-    [SerializeField] private GameObject EquipmentPrefab;
+    private GameManager gameManager;
+    private ScoreManager scoreManager;
+    private CharacterControl characterControl;
+    
+    private GameObject canvas;
+
+    #region UIobjects
+    [SerializeField] private GameObject gameCurrency;
+    [SerializeField] private GameObject currentCurrency;
+    [SerializeField] private GameObject premiumCurrency;
+    [SerializeField] private GameObject playButton;
+    [SerializeField] private GameObject restartButton;
+    [SerializeField] private GameObject optionsButton;
+    [SerializeField] private GameObject shopButton;
+    [SerializeField] private GameObject adBlock;
+    [SerializeField] private GameObject title;
     #endregion
-    #region UI Objects
-    [SerializeField] private GameObject PressToStartScreen;
-    [SerializeField] private GameObject MainMenuScreen;
-    [SerializeField] private GameObject StartGameScreen;
-    [SerializeField] private GameObject GamePlayScreen;
-    [SerializeField] private GameObject GameOverScreen;
-    [SerializeField] private GameObject VictoryScreen;
-    [SerializeField] private GameObject OptionsScreen;
-    [SerializeField] private GameObject ShopScreen;
-    [SerializeField] private GameObject EquipmentScreen;
-    #endregion
+    private Text currentCurrencyText;
+    private Text gameCurrencyText;
+
+    public int UIState = 0;
+
 
     void Start()
     {
-        canvas = FindObjectOfType<Canvas>();
-        MainMenuScreen = Instantiate(MainMenuPrefab,canvas.transform);
+        gameManager = FindObjectOfType<GameManager>();
+        scoreManager = FindObjectOfType<ScoreManager>();
+        characterControl = FindObjectOfType<CharacterControl>();
+        canvas = this.gameObject;
+        currentCurrencyText = currentCurrency.GetComponentInChildren<Text>();
+        gameCurrencyText = gameCurrency.GetComponentInChildren<Text>();
     }
 
 
     void Update()
     {
-        
-        
+        switch (UIState)
+        {
+            case 0:     //Main Menu
+                mainMenuDisplayUI();
+                break;
+            case 1:     //Gameplay
+                gamePlayDisplayUI();
+                break;
+        }
+        currentCurrencyText.text = ((int)scoreManager.currentScore).ToString();
+        gameCurrencyText.text = scoreManager.totalScore.ToString();
 
+
+    }
+
+    private void mainMenuDisplayUI()
+    {
+        gameCurrency.gameObject.SetActive(true);
+        premiumCurrency.gameObject.SetActive(true);
+        playButton.gameObject.SetActive(true);
+        optionsButton.gameObject.SetActive(true);
+        shopButton.gameObject.SetActive(true);
+        adBlock.gameObject.SetActive(true);
+        title.gameObject.SetActive(true);
+        restartButton.gameObject.SetActive(false);
+    }
+
+    private void gamePlayDisplayUI()
+    {
+        gameCurrency.gameObject.SetActive(true);
+        premiumCurrency.gameObject.SetActive(true);
+        playButton.gameObject.SetActive(false);
+        optionsButton.gameObject.SetActive(false);
+        shopButton.gameObject.SetActive(false);
+        adBlock.gameObject.SetActive(true);
+        title.gameObject.SetActive(false);
+
+        if(gameManager.defeat || gameManager.finish)
+            restartButton.gameObject.SetActive(true);
+        else
+            restartButton.gameObject.SetActive(false);
     }
 
     public void StartGame()
     {
-
+        UIState = 1; 
+        gameManager.restart();
     }
 
-    public void DestroyAll()
+    public void RestartGame()
     {
-      
+        UIState = 1;
+        gameManager.restart();
     }
 
     // Create all nesesery obcejts on the screen and handle whitch ones are visable at the moment

@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private Watcher watcher;
+    public UIManager UImanager;
 
     private CharacterControl characterControl;
     private ScoreManager scoreManager;
@@ -36,6 +37,9 @@ public class GameManager : MonoBehaviour
         watcher = FindObjectOfType<Watcher>();
         characterControl = player.GetComponent<CharacterControl>();
         scoreManager = FindObjectOfType<ScoreManager>();
+        UImanager = FindObjectOfType<UIManager>();
+
+        finish = true;
     }
 
     // Update is called once per frame
@@ -85,9 +89,10 @@ public class GameManager : MonoBehaviour
         Destroy(ball);
         player.transform.position = restartPosition.position;
         player.transform.rotation = restartPosition.rotation;
+        scoreManager.RestartScore();
     } 
 
-    private void restart()              //Invokes the startRestartTimer function
+    public void restart()              //Invokes the startRestartTimer function
     {
         StartCoroutine(startRestartTimer());
     }

@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.Assertions;
 public class ScoreManager : MonoBehaviour
 {
-    [SerializeField] private int totalScore;        //Total amount of points earned during all games
-    [SerializeField] private float currentScore;      //Current score during the run
+    [SerializeField] public int totalScore;        //Total amount of points earned during all games
+    [SerializeField] public float currentScore;      //Current score during the run
     [SerializeField] private float sprintMultiplier = 1;      //Increments the score received
     [SerializeField] private float multiplierIncrease;      // Increases the sprintMultiplier when the player moves
     [SerializeField] private float multiplierDecrease;      // Decreases the sprintMultiplier when the player doesn't move

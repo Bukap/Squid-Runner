@@ -7,6 +7,7 @@ public class CharacterControl : MonoBehaviour
 {
     private GameObject player;
     private GameManager gameManager;
+    private UIManager uiManager;
 
     #region Movement
     [SerializeField] private float acceleration;        // How fast we do reach top speed
@@ -39,12 +40,12 @@ public class CharacterControl : MonoBehaviour
         player = this.gameObject;
         gameManager = FindObjectOfType<GameManager>();
         rigidbody = this.GetComponent<Rigidbody>();
-
+        uiManager = FindObjectOfType<UIManager>();
     }
 
     void Update()
     {
-        if (!gameManager.defeat && !gameManager.finish)        // Needed to separate the accelerating to keep a steady framework and get the button pressed read
+        if (!gameManager.defeat && !gameManager.finish && gameManager.UImanager.UIState == 1)        // Needed to separate the accelerating to keep a steady framework and get the button pressed read
         {
             accelerating();
         }
@@ -115,7 +116,7 @@ public class CharacterControl : MonoBehaviour
 
     
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerExit(Collider collision)
     {
         if(collision.tag == "Finish")
         {

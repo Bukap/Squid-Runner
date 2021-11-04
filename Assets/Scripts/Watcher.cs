@@ -22,7 +22,7 @@ public class Watcher : MonoBehaviour
 
     void Update()
     {
-        if(!gameManager.defeat && !gameManager.finish)
+        if(!gameManager.defeat && !gameManager.finish && gameManager.UImanager.UIState == 1)
         rotate();
     }
 
