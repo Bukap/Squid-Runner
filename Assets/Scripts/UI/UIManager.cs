@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
     #endregion
     private Text currentCurrencyText;
     private Text gameCurrencyText;
+    private Text premiumCurrencyText;
 
     public int UIState = 0;
 
@@ -37,6 +38,7 @@ public class UIManager : MonoBehaviour
         canvas = this.gameObject;
         currentCurrencyText = currentCurrency.GetComponentInChildren<Text>();
         gameCurrencyText = gameCurrency.GetComponentInChildren<Text>();
+        premiumCurrencyText = premiumCurrency.GetComponentInChildren<Text>();
     }
 
 
@@ -48,16 +50,17 @@ public class UIManager : MonoBehaviour
                 mainMenuDisplayUI();
                 break;
             case 1:     //Gameplay
-                gamePlayDisplayUI();
+                gameplayDisplayUI();
                 break;
         }
-        currentCurrencyText.text = ((int)scoreManager.currentScore).ToString();
-        gameCurrencyText.text = scoreManager.totalScore.ToString();
 
+        currentCurrencyText.text = ((int)scoreManager.currentScore).ToString();     //Displaying the current score on the screen
+        gameCurrencyText.text = gameManager.NormalCurrency.ToString();               // Displaying current normal currency
+        premiumCurrencyText.text = gameManager.PremiumCurrency.ToString();          // Displaying current premium currency
 
     }
 
-    private void mainMenuDisplayUI()
+    private void mainMenuDisplayUI()                        // There have to be another way. Find an optiomal way to do the UI system
     {
         gameCurrency.gameObject.SetActive(true);
         premiumCurrency.gameObject.SetActive(true);
@@ -69,7 +72,7 @@ public class UIManager : MonoBehaviour
         restartButton.gameObject.SetActive(false);
     }
 
-    private void gamePlayDisplayUI()
+    private void gameplayDisplayUI()
     {
         gameCurrency.gameObject.SetActive(true);
         premiumCurrency.gameObject.SetActive(true);
@@ -85,17 +88,22 @@ public class UIManager : MonoBehaviour
             restartButton.gameObject.SetActive(false);
     }
 
+    private void shopDisplayUI()
+    {
+
+    }
+
     public void StartGame()
     {
         UIState = 1; 
         gameManager.restart();
-    }
+    }       //Button function for starting the game
 
     public void RestartGame()
     {
         UIState = 1;
         gameManager.restart();
-    }
+    }       //Button function for restarting the game
 
-    // Create all nesesery obcejts on the screen and handle whitch ones are visable at the moment
+
 }

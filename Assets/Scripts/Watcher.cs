@@ -20,9 +20,9 @@ public class Watcher : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if(!gameManager.defeat && !gameManager.finish && gameManager.UImanager.UIState == 1)
+        if(!gameManager.defeat && !gameManager.finish && gameManager.UImanager.UIState == 1)        // If the game is in the game mode the watcher will stay still
         rotate();
     }
 
@@ -43,7 +43,7 @@ public class Watcher : MonoBehaviour
             watcherObject.transform.rotation = Quaternion.RotateTowards(watcherObject.transform.rotation, desiredRotation, rotationSpeed );
         }
 
-        if (watcherObject.transform.eulerAngles.y > 90)         
+        if (watcherObject.transform.eulerAngles.y > 90)     //Gives true or false based on the current rotation    
             isWatching = false;                             
         else                                                
             isWatching = true;

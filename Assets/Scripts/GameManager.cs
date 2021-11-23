@@ -6,9 +6,9 @@ public class GameManager : MonoBehaviour
 {
     private Watcher watcher;
     public UIManager UImanager;
-
     private CharacterControl characterControl;
     private ScoreManager scoreManager;
+
     [SerializeField] private GameObject player;     //Pointing at the player character and accesing its class
     [SerializeField] private GameObject[] characters;       //An array of all NPC characters
 
@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] public bool finish { get; set; }
     
     #region Ball
-    [SerializeField] private GameObject ballPrefab;         // Stores the prefab of the ball
     [SerializeField] private GameObject ball;               // Creates a clone of the ballPrefab
     [SerializeField] private float distance;                // Defines how far on the x axis the ball is created
     [SerializeField] private float hight;                   // Defines how high on the y axis the ball is created
@@ -31,6 +30,16 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Transform restartPosition;     // Defines where the starting point for the player is for every gameloop
     [SerializeField] private float countDown;               // Defines after how many seconds after pressing the restart button the game will reset
+
+    [SerializeField] public int NormalCurrency;        //Total amount of in game currency
+    [SerializeField] public int PremiumCurrency;        //Total amount of premium currency
+
+    [SerializeField] private GameObject currentCharacter;
+    [SerializeField] private GameObject currentArena;        
+    [SerializeField] private GameObject currentWatcher;         // OGARNIJ OBIEKTY W GRZE TAK ABY BYLY LATWE DO PODMIANY <----!
+    [SerializeField] private GameObject currentBall;        
+
+    
 
     void Start()
     {
@@ -70,7 +79,7 @@ public class GameManager : MonoBehaviour
         if(characterControl.speed>0 && watcher.isWatching && !defeat && !finish)
         {
             defeat = true;
-            ball = Instantiate(ballPrefab);
+            ball = Instantiate(currentBall);
             ball.transform.position = player.transform.position + (new Vector3(distance,hight));
         }
     }       // If !green and the player moves the defeat bool is set to true and a ball is created that hits the player
@@ -79,7 +88,7 @@ public class GameManager : MonoBehaviour
     {
         finish = true;
         scoreManager.AddToTotalScore();
-    }
+    }       // Once the player will cross the finish line the function is called
 
     IEnumerator startRestartTimer()         // After the countDown amount of seconds the gameloop resets
     {

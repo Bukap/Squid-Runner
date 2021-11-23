@@ -118,7 +118,7 @@ public class CharacterControl : MonoBehaviour
 
     private void OnTriggerExit(Collider collision)
     {
-        if(collision.tag == "Finish")
+        if(collision.tag == "Finish")       //Triggers the Victiory function once the line is crossed
         {
             gameManager.Victory();
         }

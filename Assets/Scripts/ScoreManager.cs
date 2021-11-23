@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Assertions;
 public class ScoreManager : MonoBehaviour
 {
-    [SerializeField] public int totalScore;        //Total amount of points earned during all games
     [SerializeField] public float currentScore;      //Current score during the run
     [SerializeField] private float sprintMultiplier = 1;      //Increments the score received
     [SerializeField] private float multiplierIncrease;      // Increases the sprintMultiplier when the player moves
@@ -14,6 +13,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private float clock;
 
     private CharacterControl characterControl;
+    private GameManager gameManager;
 
 
     void Awake()
@@ -28,6 +28,7 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         characterControl = FindObjectOfType<CharacterControl>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     void FixedUpdate()
@@ -37,7 +38,7 @@ public class ScoreManager : MonoBehaviour
         multiplierHandler();
     }
 
-    private void gettingScore()
+    private void gettingScore()     //increase score if the speed is > than 0
     {
         if (characterControl.speed > 0 && clock > increaseFrequency)
         {
@@ -46,7 +47,7 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    private void multiplierHandler()
+    private void multiplierHandler() //increase multiplier if the speed is > than 0
     {
         if(characterControl.speed>0)
             sprintMultiplier += multiplierIncrease;
@@ -55,13 +56,13 @@ public class ScoreManager : MonoBehaviour
 
     }
 
-    public void AddToTotalScore()
+    public void AddToTotalScore()       // ads the run score to the total score
     {
-        totalScore +=  (int)currentScore;
+        gameManager.NormalCurrency +=  (int)currentScore;
         RestartScore();
     }
 
-    public void RestartScore()
+    public void RestartScore()      // resets the current score and sprint multiplier
     {
         currentScore = 0;
         sprintMultiplier = 1;
