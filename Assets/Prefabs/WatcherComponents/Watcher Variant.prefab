@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1992504185718632357, guid: 373a3356377adb94caac2945731364e3, type: 3}
       propertyPath: m_Name
-      value: Watcher
+      value: Watcher Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1992504185718632377, guid: 373a3356377adb94caac2945731364e3, type: 3}
       propertyPath: m_RootOrder
@@ -17,15 +17,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1992504185718632377, guid: 373a3356377adb94caac2945731364e3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.43085033
       objectReference: {fileID: 0}
     - target: {fileID: 1992504185718632377, guid: 373a3356377adb94caac2945731364e3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1992504185718632377, guid: 373a3356377adb94caac2945731364e3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 602.03186
       objectReference: {fileID: 0}
     - target: {fileID: 1992504185718632377, guid: 373a3356377adb94caac2945731364e3, type: 3}
       propertyPath: m_LocalRotation.w
