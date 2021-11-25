@@ -6,8 +6,9 @@ using UnityEngine.Assertions;
 public class CharacterControl : MonoBehaviour
 {
     private GameObject player;
-    private GameManager gameManager;
-    private UIManager uiManager;
+    public GameManager gameManager;
+    public UIManager uiManager;
+    private ScoreManager scoreManager;
 
     #region Movement
     [SerializeField] private float acceleration;        // How fast we do reach top speed
@@ -20,7 +21,7 @@ public class CharacterControl : MonoBehaviour
     #endregion
 
     #region Camera position
-    [SerializeField] private Camera camera;
+    public Camera camera;
     [SerializeField] private Vector3 cameraPosition;
     #endregion
 
@@ -39,8 +40,13 @@ public class CharacterControl : MonoBehaviour
     {
         player = this.gameObject;
         gameManager = FindObjectOfType<GameManager>();
+        scoreManager = FindObjectOfType<ScoreManager>();
         rigidbody = this.GetComponent<Rigidbody>();
         uiManager = FindObjectOfType<UIManager>();
+        camera = FindObjectOfType<Camera>(); 
+        gameManager.scoreManager.characterControl = this.GetComponent<CharacterControl>();
+        scoreManager.characterControl = GetComponent<CharacterControl>();
+        gameManager.characterControl = GetComponent<CharacterControl>();
     }
 
     void Update()
@@ -57,7 +63,6 @@ public class CharacterControl : MonoBehaviour
         if (!gameManager.defeat && !gameManager.finish)        // Prevents the player from moving and stops him in place to take a shot
         {
             move();
-            accelerating();
             cameraFollow();
             rigidbody.isKinematic = true;
         }

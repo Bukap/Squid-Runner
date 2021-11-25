@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Watcher : MonoBehaviour
-{
-    [SerializeField] private GameObject character;      
-
+{   
     [SerializeField] private float rotationSpeed;
 
     private GameObject watcherObject;
 
-    private GameManager gameManager;
+    public GameManager gameManager;
 
     public bool isWatching { get; set; }
 
@@ -18,6 +16,7 @@ public class Watcher : MonoBehaviour
     {
         watcherObject = this.gameObject;
         gameManager = FindObjectOfType<GameManager>();
+        gameManager.watcher = GetComponent<Watcher>();
     }
 
     void FixedUpdate()
@@ -32,7 +31,7 @@ public class Watcher : MonoBehaviour
 
         if (gameManager.green)      //Rotates the head depending on the current bool methode
         {
-            Quaternion desiredRotation = Quaternion.LookRotation(Vector3.forward, character.transform.position - watcherObject.transform.position);
+            Quaternion desiredRotation = Quaternion.LookRotation(Vector3.forward, gameManager.currentCharacter.transform.position - watcherObject.transform.position);
             desiredRotation = Quaternion.Euler(0, -90, 0);
             watcherObject.transform.rotation = Quaternion.RotateTowards(watcherObject.transform.rotation, desiredRotation, rotationSpeed );
         }

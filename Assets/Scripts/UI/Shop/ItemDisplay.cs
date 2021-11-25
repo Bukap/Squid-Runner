@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ItemDisplay : MonoBehaviour
 {
+    [SerializeField] private GameObject item;
     [SerializeField] private Sprite itemOverview;
 
     [SerializeField] private int normalPrice;
@@ -34,6 +35,26 @@ public class ItemDisplay : MonoBehaviour
         premiumPriceDisplay.text = premiumPrice.ToString();
         Unlocked.SetActive(false);
         Check.SetActive(false);
+
+        if (bought)
+        {
+            normalPriceDisplay.text = null;
+            premiumPriceDisplay.text = null;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if(gameManager.currentArena||gameManager.currentBall||gameManager.currentCharacter||gameManager.currentWatcher == item)
+        {
+            Check.SetActive(true);
+            Cross.SetActive(false);
+        }
+        else
+        {
+            Check.SetActive(false);
+            Cross.SetActive(true);
+        }
     }
 
     private int BuyItem(int currency, int price) 
@@ -68,25 +89,36 @@ public class ItemDisplay : MonoBehaviour
             gameManager.NormalCurrency = BuyItem(gameManager.NormalCurrency, normalPrice);
         else
             Debug.Log("Posiadane");
+        Debug.Log(this.transform.parent.parent.name);
     }
 
-    private void itemReplacement()
+    public void ItemReplacement()
     {
-        if(transform.parent.parent.name == "CharacterPage")
+        if (bought)
         {
-
+            if (transform.parent.parent.name == "CharacterPage")
+            {
+                Destroy(gameManager.currentCharacter);
+                gameManager.currentCharacter = Instantiate(item);
+            }
+            else if (transform.parent.parent.name == "ArenaPage")
+            {
+                Destroy(gameManager.currentArena);
+                gameManager.currentArena = Instantiate(item);
+            }
+            else if (transform.parent.parent.name == "WatcherPage")
+            {
+                Destroy(gameManager.currentWatcher);
+                gameManager.currentWatcher = Instantiate(item);
+            }
+            else if (transform.parent.parent.name == "BallPage")
+            {
+                gameManager.currentBall = item;
+            }
         }
-        else if(transform.parent.parent.name == "ArenaPage")
+        else
         {
-
-        }
-        else if (transform.parent.parent.name == "WatcherPage")
-        {
-
-        }
-        else if (transform.parent.parent.name == "BallPage")
-        {
-
+            Debug.Log("Najpierw Kup");
         }
     }
 }

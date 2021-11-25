@@ -298,8 +298,8 @@ GameObject:
   - component: {fileID: 6751381994899513341}
   - component: {fileID: 7339877511244793644}
   - component: {fileID: 1778689421334860677}
-  - component: {fileID: 5976025393646211256}
   - component: {fileID: 2811977224184295767}
+  - component: {fileID: 5976025393646211256}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -370,6 +370,30 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2811977224184295767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2658734147611737852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be38f616a0e75f34fae7cda65ca3cf80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 0}
+  itemOverview: {fileID: 0}
+  normalPrice: 1000
+  premiumPrice: 100
+  normalPriceDisplay: {fileID: 6695479399502104367}
+  premiumPriceDisplay: {fileID: 8671488811587119620}
+  bought: 0
+  usedCurrently: 0
+  Check: {fileID: 6320272767586634227}
+  Cross: {fileID: 3128567325986083162}
+  Locked: {fileID: 7414251454743044289}
+  Unlocked: {fileID: 409936226484275466}
 --- !u!114 &5976025393646211256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,30 +437,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1778689421334860677}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
---- !u!114 &2811977224184295767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2658734147611737852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be38f616a0e75f34fae7cda65ca3cf80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemOverview: {fileID: 0}
-  normalPrice: 1000
-  premiumPrice: 100
-  normalPriceDisplay: {fileID: 6695479399502104367}
-  premiumPriceDisplay: {fileID: 8671488811587119620}
-  bought: 0
-  usedCurrently: 0
-  Check: {fileID: 6320272767586634227}
-  Cross: {fileID: 3128567325986083162}
-  Locked: {fileID: 7414251454743044289}
-  Unlocked: {fileID: 409936226484275466}
+      m_Calls:
+      - m_Target: {fileID: 2811977224184295767}
+        m_TargetAssemblyTypeName: ItemDisplay, Assembly-CSharp
+        m_MethodName: ItemReplacement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!1 &3128567325986083162
 GameObject:
   m_ObjectHideFlags: 0

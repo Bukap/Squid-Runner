@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private Watcher watcher;
+    public Watcher watcher;
     public UIManager UImanager;
-    private CharacterControl characterControl;
-    private ScoreManager scoreManager;
+    public CharacterControl characterControl;
+    public ScoreManager scoreManager;
 
-    [SerializeField] private GameObject player;     //Pointing at the player character and accesing its class
     [SerializeField] private GameObject[] characters;       //An array of all NPC characters
 
     #region Green Frequency
@@ -21,7 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public bool green { get; set; }        // Defines if the characters can move without lousing
     [SerializeField] public bool defeat { get; set; }       // Defines if the players character has been defeated
     [SerializeField] public bool finish { get; set; }
-    
+
     #region Ball
     [SerializeField] private GameObject ball;               // Creates a clone of the ballPrefab
     [SerializeField] private float distance;                // Defines how far on the x axis the ball is created
@@ -34,21 +33,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] public int NormalCurrency;        //Total amount of in game currency
     [SerializeField] public int PremiumCurrency;        //Total amount of premium currency
 
-    [SerializeField] private GameObject currentCharacter;
-    [SerializeField] private GameObject currentArena;        
-    [SerializeField] private GameObject currentWatcher;         // OGARNIJ OBIEKTY W GRZE TAK ABY BYLY LATWE DO PODMIANY <----!
-    [SerializeField] private GameObject currentBall;        
+    [SerializeField] public GameObject currentCharacter;
+    [SerializeField] public GameObject currentArena;
+    [SerializeField] public GameObject currentWatcher;         // OGARNIJ OBIEKTY W GRZE TAK ABY BYLY LATWE DO PODMIANY <----!
+    [SerializeField] public GameObject currentBall;
 
-    
+
 
     void Start()
     {
-        watcher = FindObjectOfType<Watcher>();
-        characterControl = player.GetComponent<CharacterControl>();
-        scoreManager = FindObjectOfType<ScoreManager>();
-        UImanager = FindObjectOfType<UIManager>();
+        instantiateObjects();
 
         finish = true;
+        getComponents();
     }
 
     // Update is called once per frame
@@ -62,7 +59,7 @@ public class GameManager : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer > timeToSwitch)               
+        if (timer > timeToSwitch)
         {
             if (green)
                 green = false;
@@ -76,11 +73,11 @@ public class GameManager : MonoBehaviour
 
     private void gameOver()
     {
-        if(characterControl.speed>0 && watcher.isWatching && !defeat && !finish)
+        if (characterControl.speed > 0 && watcher.isWatching && !defeat && !finish)
         {
             defeat = true;
             ball = Instantiate(currentBall);
-            ball.transform.position = player.transform.position + (new Vector3(distance,hight));
+            ball.transform.position = currentCharacter.transform.position + (new Vector3(distance, hight));
         }
     }       // If !green and the player moves the defeat bool is set to true and a ball is created that hits the player
 
@@ -96,16 +93,38 @@ public class GameManager : MonoBehaviour
         defeat = false;
         finish = false;
         Destroy(ball);
-        player.transform.position = restartPosition.position;
-        player.transform.rotation = restartPosition.rotation;
+        currentCharacter.transform.position = restartPosition.position;
+        currentCharacter.transform.rotation = restartPosition.rotation;
         scoreManager.RestartScore();
-    } 
+    }
 
     public void restart()              //Invokes the startRestartTimer function
     {
         StartCoroutine(startRestartTimer());
     }
 
+    public void instantiateObjects()
+    {
+        currentCharacter = Instantiate(currentCharacter);
+        currentArena = Instantiate(currentArena);
+        currentWatcher = Instantiate(currentWatcher);        
+    }
 
+    public void getComponents()
+    {
+        #region gameMangers accesses
+        watcher = currentWatcher.GetComponent<Watcher>();
+        characterControl = currentCharacter.GetComponent<CharacterControl>();
+        scoreManager = FindObjectOfType<ScoreManager>();
+        UImanager = FindObjectOfType<UIManager>();
+        #endregion
+        #region scoreManagers accesess
+        scoreManager.gameManager = this.GetComponent<GameManager>();
+        #endregion
+
+        #region watcher accesses
+        watcher.gameManager = this.GetComponent<GameManager>();
+        #endregion
+    }
 
 }

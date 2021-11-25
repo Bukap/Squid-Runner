@@ -12,8 +12,8 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private float increaseFrequency;       //Once clock will reach this number it will increase the current score acording to a formula
     [SerializeField] private float clock;
 
-    private CharacterControl characterControl;
-    private GameManager gameManager;
+    public CharacterControl characterControl;
+    public GameManager gameManager;
 
 
     void Awake()
@@ -27,8 +27,7 @@ public class ScoreManager : MonoBehaviour
 
     void Start()
     {
-        characterControl = FindObjectOfType<CharacterControl>();
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = FindObjectOfType<GameManager>(); 
     }
 
     void FixedUpdate()
@@ -36,6 +35,7 @@ public class ScoreManager : MonoBehaviour
         clock += Time.deltaTime;
         gettingScore();
         multiplierHandler();
+
     }
 
     private void gettingScore()     //increase score if the speed is > than 0
@@ -53,7 +53,6 @@ public class ScoreManager : MonoBehaviour
             sprintMultiplier += multiplierIncrease;
         else if(sprintMultiplier>1)
             sprintMultiplier -= multiplierDecrease;
-
     }
 
     public void AddToTotalScore()       // ads the run score to the total score

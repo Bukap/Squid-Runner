@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1527333606260303122}
   - component: {fileID: 8949688169320315735}
   m_Layer: 0
-  m_Name: PlayButton
+  m_Name: RestartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5595531464951869699, guid: 635fc84ecaffd1d478d1a808ac3df035, type: 3}
+  m_Sprite: {fileID: -6836920196611708753, guid: 635fc84ecaffd1d478d1a808ac3df035, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -122,7 +122,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: StartGame
+        m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

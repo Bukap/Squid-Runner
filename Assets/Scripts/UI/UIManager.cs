@@ -14,14 +14,25 @@ public class UIManager : MonoBehaviour
 
     #region UIobjects
     [SerializeField] private GameObject gameCurrency;
-    [SerializeField] private GameObject currentCurrency;
     [SerializeField] private GameObject premiumCurrency;
+    [SerializeField] private GameObject currentCurrency;
     [SerializeField] private GameObject playButton;
     [SerializeField] private GameObject restartButton;
     [SerializeField] private GameObject optionsButton;
     [SerializeField] private GameObject shopButton;
     [SerializeField] private GameObject adBlock;
     [SerializeField] private GameObject title;
+    [SerializeField] private GameObject toMenu;
+
+    [SerializeField] private GameObject shopCharacterPage;
+    [SerializeField] private GameObject shopArenaPage;
+    [SerializeField] private GameObject shopWatcherPage;
+    [SerializeField] private GameObject shopBallPage;
+
+    [SerializeField] private GameObject shopArenaPageButton;
+    [SerializeField] private GameObject shopBallPageButton;
+    [SerializeField] private GameObject shopCharacterPageButton;
+    [SerializeField] private GameObject shopWatcherPageButton;
     #endregion
     private Text currentCurrencyText;
     private Text gameCurrencyText;
@@ -52,6 +63,9 @@ public class UIManager : MonoBehaviour
             case 1:     //Gameplay
                 gameplayDisplayUI();
                 break;
+            case 2:
+                shopDisplayUI();    //Shop
+                break;
         }
 
         currentCurrencyText.text = ((int)scoreManager.currentScore).ToString();     //Displaying the current score on the screen
@@ -70,6 +84,18 @@ public class UIManager : MonoBehaviour
         adBlock.gameObject.SetActive(true);
         title.gameObject.SetActive(true);
         restartButton.gameObject.SetActive(false);
+        currentCurrency.gameObject.SetActive(false);
+        toMenu.gameObject.SetActive(false);
+
+        shopCharacterPage.gameObject.SetActive(false);
+        shopArenaPage.gameObject.SetActive(false);
+        shopWatcherPage.gameObject.SetActive(false);
+        shopBallPage.gameObject.SetActive(false);
+
+        shopArenaPageButton.gameObject.SetActive(false);
+        shopBallPageButton.gameObject.SetActive(false);
+        shopCharacterPageButton.gameObject.SetActive(false);
+        shopWatcherPageButton.gameObject.SetActive(false);
     }
 
     private void gameplayDisplayUI()
@@ -81,16 +107,47 @@ public class UIManager : MonoBehaviour
         shopButton.gameObject.SetActive(false);
         adBlock.gameObject.SetActive(true);
         title.gameObject.SetActive(false);
+        currentCurrency.gameObject.SetActive(true);
 
-        if(gameManager.defeat || gameManager.finish)
+        shopCharacterPage.gameObject.SetActive(false);
+        shopArenaPage.gameObject.SetActive(false);
+        shopWatcherPage.gameObject.SetActive(false);
+        shopBallPage.gameObject.SetActive(false);
+
+        shopArenaPageButton.gameObject.SetActive(false);
+        shopBallPageButton.gameObject.SetActive(false);
+        shopCharacterPageButton.gameObject.SetActive(false);
+        shopWatcherPageButton.gameObject.SetActive(false);
+
+        if (gameManager.defeat || gameManager.finish)
+        {
             restartButton.gameObject.SetActive(true);
+            toMenu.gameObject.SetActive(true);
+        }
         else
+        {
             restartButton.gameObject.SetActive(false);
+            toMenu.gameObject.SetActive(false);
+        }
     }
 
     private void shopDisplayUI()
     {
+        gameCurrency.gameObject.SetActive(true);
+        premiumCurrency.gameObject.SetActive(true);
+        playButton.gameObject.SetActive(false);
+        optionsButton.gameObject.SetActive(false);
+        shopButton.gameObject.SetActive(false);
+        adBlock.gameObject.SetActive(true);
+        title.gameObject.SetActive(false);
+        restartButton.gameObject.SetActive(false);
+        currentCurrency.gameObject.SetActive(false);
+        toMenu.gameObject.SetActive(true);
 
+        shopArenaPageButton.gameObject.SetActive(true);
+        shopBallPageButton.gameObject.SetActive(true);
+        shopCharacterPageButton.gameObject.SetActive(true);
+        shopWatcherPageButton.gameObject.SetActive(true);
     }
 
     public void StartGame()
@@ -105,5 +162,44 @@ public class UIManager : MonoBehaviour
         gameManager.restart();
     }       //Button function for restarting the game
 
+    public void EnterShop()
+    {
+        UIState = 2;
+    }
+
+    public void EnterMenu()
+    {
+        UIState = 0;
+        gameManager.restart();
+    }
+
+    public void EnterArenaPage()
+    {
+        shopArenaPage.gameObject.SetActive(true);
+        shopBallPage.gameObject.SetActive(false);
+        shopCharacterPage.gameObject.SetActive(false);
+        shopWatcherPage.gameObject.SetActive(false);
+    }
+    public void EnterBallPage()
+    {
+        shopArenaPage.gameObject.SetActive(false);
+        shopBallPage.gameObject.SetActive(true);
+        shopCharacterPage.gameObject.SetActive(false);
+        shopWatcherPage.gameObject.SetActive(false);
+    }
+    public void EnterCharacterPage()
+    {
+        shopArenaPage.gameObject.SetActive(false);
+        shopBallPage.gameObject.SetActive(false);
+        shopCharacterPage.gameObject.SetActive(true);
+        shopWatcherPage.gameObject.SetActive(false);
+    }
+    public void EnterWatcherPage()
+    {
+        shopArenaPage.gameObject.SetActive(false);
+        shopBallPage.gameObject.SetActive(false);
+        shopCharacterPage.gameObject.SetActive(false);
+        shopWatcherPage.gameObject.SetActive(true);
+    }
 
 }
