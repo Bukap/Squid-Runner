@@ -589,4 +589,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/Game.unity
-  playerPath: C:/Users/piotr/Desktop/Build - alfa/alfa.apk
+  playerPath: C:/Users/piotr/Desktop/Build - alfa/Squid Runner.apk
