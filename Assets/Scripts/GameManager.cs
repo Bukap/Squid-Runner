@@ -40,12 +40,15 @@ public class GameManager : MonoBehaviour
 
 
 
-    void Start()
+    void Awake()
     {
         instantiateObjects();
+    }
 
-        finish = true;
+    void Start()
+    {
         getComponents();
+        finish = true;
     }
 
     // Update is called once per frame
@@ -100,7 +103,14 @@ public class GameManager : MonoBehaviour
 
     public void restart()              //Invokes the startRestartTimer function
     {
-        StartCoroutine(startRestartTimer());
+        //StartCoroutine(startRestartTimer());
+        defeat = false;
+        finish = false;
+        Destroy(ball);
+        currentCharacter.transform.position = restartPosition.position;
+        currentCharacter.transform.rotation = restartPosition.rotation;
+        scoreManager.RestartScore();
+        timer = 0;
     }
 
     public void instantiateObjects()
