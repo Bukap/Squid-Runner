@@ -22,7 +22,11 @@ public class CharacterControl : MonoBehaviour
 
     #region Camera position
     public Camera camera;
-    [SerializeField] private Vector3 cameraPosition;
+    [SerializeField] private float cameraSpeed;
+    private float currentCameraSpeed;
+    [SerializeField] private Vector3 cameraPositionGameplay;
+    [SerializeField] public Vector3 cameraPositionElse;
+
     #endregion
 
     //Physics
@@ -47,6 +51,9 @@ public class CharacterControl : MonoBehaviour
         gameManager.scoreManager.characterControl = this.GetComponent<CharacterControl>();
         scoreManager.characterControl = GetComponent<CharacterControl>();
         gameManager.characterControl = GetComponent<CharacterControl>();
+
+        camera.transform.position =  cameraPositionElse;
+        camera.transform.LookAt(gameManager.currentArena.transform.position);
     }
 
     void Update()
@@ -116,16 +123,39 @@ public class CharacterControl : MonoBehaviour
 
     private void cameraFollow()     //Makes the camera follow the player
     {
-        camera.transform.position = cameraPosition + player.transform.position;
+        if (speed < cameraSpeed)        //Defines the speed of the camera so it can follow the player during the gameplay and move slowly during UI activities
+        {
+            currentCameraSpeed = cameraSpeed;
+        }
+        else
+        {
+            currentCameraSpeed = speed;
+        }
+
+        if (uiManager.UIState == 1) //Gameplay
+        {
+            camera.transform.position = Vector3.Lerp(camera.transform.position, cameraPositionGameplay + player.transform.position, currentCameraSpeed);
+            camera.transform.LookAt(gameManager.watcher.transform.position);
+        }
+        else
+        {
+            camera.transform.position = Vector3.MoveTowards(camera.transform.position, cameraPositionElse, currentCameraSpeed);
+            camera.transform.LookAt(gameManager.currentArena.transform.position);
+        }
     }
 
-    
+
 
     private void OnTriggerExit(Collider collision)
     {
         if(collision.tag == "Finish")       //Triggers the Victiory function once the line is crossed
         {
             gameManager.Victory();
+        }
+
+        if(collision.tag == "Start")
+        {
+            gameManager.CrossLine = true;
         }
     }
 

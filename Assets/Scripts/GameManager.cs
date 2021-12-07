@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public bool defeat { get; set; }       // Defines if the players character has been defeated
     [SerializeField] public bool finish { get; set; }
 
+    public bool CrossLine;
+
     #region Ball
     [SerializeField] private GameObject ball;               // Creates a clone of the ballPrefab
     [SerializeField] private float distance;                // Defines how far on the x axis the ball is created
@@ -49,6 +51,7 @@ public class GameManager : MonoBehaviour
     {
         getComponents();
         finish = true;
+        green = true;
     }
 
     // Update is called once per frame
@@ -60,7 +63,8 @@ public class GameManager : MonoBehaviour
 
     private void redGreen()
     {
-        timer += Time.deltaTime;
+        if (!defeat && !finish && UImanager.UIState == 1 && CrossLine)
+            timer += Time.deltaTime;
 
         if (timer > timeToSwitch)
         {
@@ -76,7 +80,7 @@ public class GameManager : MonoBehaviour
 
     private void gameOver()
     {
-        if (characterControl.speed > 0 && watcher.isWatching && !defeat && !finish)
+        if (characterControl.speed > 0 && watcher.isWatching && !defeat && !finish && CrossLine)
         {
             defeat = true;
             ball = Instantiate(currentBall);
@@ -110,6 +114,8 @@ public class GameManager : MonoBehaviour
         currentCharacter.transform.position = restartPosition.position;
         currentCharacter.transform.rotation = restartPosition.rotation;
         scoreManager.RestartScore();
+        CrossLine = false;
+        green = true;
         timer = 0;
     }
 

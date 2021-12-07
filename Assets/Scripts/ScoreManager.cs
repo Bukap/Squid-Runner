@@ -40,7 +40,7 @@ public class ScoreManager : MonoBehaviour
 
     private void gettingScore()     //increase score if the speed is > than 0
     {
-        if (characterControl.speed > 0 && clock > increaseFrequency)
+        if (characterControl.speed > 0 && clock > increaseFrequency && gameManager.CrossLine)
         {
             currentScore += incrementValue * sprintMultiplier;
             clock = 0;
@@ -49,10 +49,13 @@ public class ScoreManager : MonoBehaviour
 
     private void multiplierHandler() //increase multiplier if the speed is > than 0
     {
-        if(characterControl.speed>0)
-            sprintMultiplier += multiplierIncrease;
-        else if(sprintMultiplier>1)
-            sprintMultiplier -= multiplierDecrease;
+        if (gameManager.CrossLine)
+        {
+            if (characterControl.speed > 0)
+                sprintMultiplier += multiplierIncrease;
+            else if (sprintMultiplier > 1)
+                sprintMultiplier -= multiplierDecrease;
+        }
     }
 
     public void AddToTotalScore()       // ads the run score to the total score

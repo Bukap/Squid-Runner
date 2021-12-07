@@ -170,6 +170,8 @@ public class UIManager : MonoBehaviour
     public void EnterMenu()
     {
         UIState = 0;
+        characterControl.camera.transform.position = characterControl.cameraPositionElse;
+        characterControl.camera.transform.LookAt(gameManager.currentArena.transform.position);
         gameManager.restart();
     }
 
@@ -179,6 +181,7 @@ public class UIManager : MonoBehaviour
         shopBallPage.gameObject.SetActive(false);
         shopCharacterPage.gameObject.SetActive(false);
         shopWatcherPage.gameObject.SetActive(false);
+        characterControl.camera.transform.position = characterControl.cameraPositionElse;
     }
     public void EnterBallPage()
     {

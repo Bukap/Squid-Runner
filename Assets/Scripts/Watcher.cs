@@ -25,9 +25,7 @@ public class Watcher : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(!gameManager.defeat && !gameManager.finish && gameManager.UImanager.UIState == 1)        // If the game is in the game mode the watcher will stay still
         rotate();
-        //Debug.Log(animator.GetCurrentAnimatorClipInfo(0).GetValue(0).ToString());
     }
 
     void rotate()
