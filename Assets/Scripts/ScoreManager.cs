@@ -12,8 +12,15 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private float increaseFrequency;       //Once clock will reach this number it will increase the current score acording to a formula
     [SerializeField] private float clock;
 
+    [SerializeField] private float MinMultiplyer;
+    [SerializeField] private float MaxMultiplyer;
+    [SerializeField] private float ReplayMultiplayer;
+    public bool replay;
+
     public CharacterControl characterControl;
     public GameManager gameManager;
+
+
 
 
     void Awake()
@@ -32,10 +39,12 @@ public class ScoreManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        clock += Time.deltaTime;
-        gettingScore();
-        multiplierHandler();
-
+        if (!replay)
+        {
+            clock += Time.deltaTime;
+            gettingScore();
+            multiplierHandler();
+        }
     }
 
     private void gettingScore()     //increase score if the speed is > than 0
@@ -58,16 +67,27 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    public void AddToTotalScore()       // ads the run score to the total score
+    public void ReplayForMore()
+    {
+        ReplayMultiplayer = Random.Range(MinMultiplyer, MaxMultiplyer);
+        currentScore *= Mathf.Round(ReplayMultiplayer);
+        replay = true;
+    }
+
+    public void AddToTotalScore()       // Gives the option to restart the run for a bigger price or to add the current run score to the total score
     {
         gameManager.NormalCurrency +=  (int)currentScore;
+        replay = false;
         RestartScore();
     }
 
     public void RestartScore()      // resets the current score and sprint multiplier
     {
-        currentScore = 0;
-        sprintMultiplier = 1;
-        clock = 0;
+        if (!replay)
+        {
+            currentScore = 0;
+            sprintMultiplier = 1;
+            clock = 0;
+        }                                       // Zrób aby klikniêcie GOIN nie resetowa³o score do zera tylko go mno¿y³o
     }
 }

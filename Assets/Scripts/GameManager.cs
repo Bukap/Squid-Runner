@@ -54,7 +54,6 @@ public class GameManager : MonoBehaviour
         green = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
         redGreen();
@@ -85,27 +84,17 @@ public class GameManager : MonoBehaviour
             defeat = true;
             ball = Instantiate(currentBall);
             ball.transform.position = currentCharacter.transform.position + (new Vector3(distance, hight));
+            scoreManager.RestartScore();
         }
     }       // If !green and the player moves the defeat bool is set to true and a ball is created that hits the player
 
     public void Victory()
     {
         finish = true;
-        scoreManager.AddToTotalScore();
+        //scoreManager.AddToTotalScore();
     }       // Once the player will cross the finish line the function is called
 
-    IEnumerator startRestartTimer()         // After the countDown amount of seconds the gameloop resets
-    {
-        yield return new WaitForSeconds(countDown);
-        defeat = false;
-        finish = false;
-        Destroy(ball);
-        currentCharacter.transform.position = restartPosition.position;
-        currentCharacter.transform.rotation = restartPosition.rotation;
-        scoreManager.RestartScore();
-    }
-
-    public void restart()              //Invokes the startRestartTimer function
+    public void restart()              //Resets player position and rotation, rotates the watcher, and resets score
     {
         //StartCoroutine(startRestartTimer());
         defeat = false;

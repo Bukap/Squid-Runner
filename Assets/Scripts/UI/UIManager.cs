@@ -10,14 +10,13 @@ public class UIManager : MonoBehaviour
     private ScoreManager scoreManager;
     private CharacterControl characterControl;
     
-    private GameObject canvas;
-
     #region UIobjects
     [SerializeField] private GameObject gameCurrency;
     [SerializeField] private GameObject premiumCurrency;
     [SerializeField] private GameObject currentCurrency;
     [SerializeField] private GameObject playButton;
     [SerializeField] private GameObject restartButton;
+    [SerializeField] private GameObject replayForMore;
     [SerializeField] private GameObject optionsButton;
     [SerializeField] private GameObject shopButton;
     [SerializeField] private GameObject adBlock;
@@ -46,7 +45,7 @@ public class UIManager : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         scoreManager = FindObjectOfType<ScoreManager>();
         characterControl = FindObjectOfType<CharacterControl>();
-        canvas = this.gameObject;
+
         currentCurrencyText = currentCurrency.GetComponentInChildren<Text>();
         gameCurrencyText = gameCurrency.GetComponentInChildren<Text>();
         premiumCurrencyText = premiumCurrency.GetComponentInChildren<Text>();
@@ -71,7 +70,6 @@ public class UIManager : MonoBehaviour
         currentCurrencyText.text = ((int)scoreManager.currentScore).ToString();     //Displaying the current score on the screen
         gameCurrencyText.text = gameManager.NormalCurrency.ToString();               // Displaying current normal currency
         premiumCurrencyText.text = gameManager.PremiumCurrency.ToString();          // Displaying current premium currency
-
     }
 
     private void mainMenuDisplayUI()                        // There have to be another way. Find an optiomal way to do the UI system
@@ -86,6 +84,7 @@ public class UIManager : MonoBehaviour
         restartButton.gameObject.SetActive(false);
         currentCurrency.gameObject.SetActive(false);
         toMenu.gameObject.SetActive(false);
+        replayForMore.gameObject.SetActive(false);
 
         shopCharacterPage.gameObject.SetActive(false);
         shopArenaPage.gameObject.SetActive(false);
@@ -108,6 +107,7 @@ public class UIManager : MonoBehaviour
         adBlock.gameObject.SetActive(true);
         title.gameObject.SetActive(false);
         currentCurrency.gameObject.SetActive(true);
+        replayForMore.gameObject.SetActive(false);
 
         shopCharacterPage.gameObject.SetActive(false);
         shopArenaPage.gameObject.SetActive(false);
@@ -121,7 +121,14 @@ public class UIManager : MonoBehaviour
 
         if (gameManager.defeat || gameManager.finish)
         {
-            restartButton.gameObject.SetActive(true);
+            if(!replayForMore.activeInHierarchy)
+                replayForMore.gameObject.SetActive(true);
+
+            if (scoreManager.replay || gameManager.defeat)
+                replayForMore.transform.Find("GoIn").gameObject.SetActive(false);
+            else
+                replayForMore.transform.Find("GoIn").gameObject.SetActive(true);
+
             toMenu.gameObject.SetActive(true);
         }
         else
@@ -143,6 +150,7 @@ public class UIManager : MonoBehaviour
         restartButton.gameObject.SetActive(false);
         currentCurrency.gameObject.SetActive(false);
         toMenu.gameObject.SetActive(true);
+        replayForMore.gameObject.SetActive(false);
 
         shopArenaPageButton.gameObject.SetActive(true);
         shopBallPageButton.gameObject.SetActive(true);
@@ -159,8 +167,16 @@ public class UIManager : MonoBehaviour
     public void RestartGame()
     {
         UIState = 1;
+        scoreManager.AddToTotalScore();
         gameManager.restart();
     }       //Button function for restarting the game
+
+    public void PlayForMore()
+    {
+        UIState = 1;
+        scoreManager.ReplayForMore();
+        gameManager.restart();
+    }
 
     public void EnterShop()
     {
@@ -170,6 +186,7 @@ public class UIManager : MonoBehaviour
     public void EnterMenu()
     {
         UIState = 0;
+        scoreManager.AddToTotalScore();
         characterControl.camera.transform.position = characterControl.cameraPositionElse;
         characterControl.camera.transform.LookAt(gameManager.currentArena.transform.position);
         gameManager.restart();
