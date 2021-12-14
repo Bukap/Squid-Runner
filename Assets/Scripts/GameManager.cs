@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
     {
         getComponents();
         finish = true;
-        green = true;
+        green = true;        
     }
 
     void Update()

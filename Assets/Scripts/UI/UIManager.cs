@@ -15,7 +15,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject premiumCurrency;
     [SerializeField] private GameObject currentCurrency;
     [SerializeField] private GameObject playButton;
-    [SerializeField] private GameObject restartButton;
     [SerializeField] private GameObject replayForMore;
     [SerializeField] private GameObject optionsButton;
     [SerializeField] private GameObject shopButton;
@@ -81,7 +80,6 @@ public class UIManager : MonoBehaviour
         shopButton.gameObject.SetActive(true);
         adBlock.gameObject.SetActive(true);
         title.gameObject.SetActive(true);
-        restartButton.gameObject.SetActive(false);
         currentCurrency.gameObject.SetActive(false);
         toMenu.gameObject.SetActive(false);
         replayForMore.gameObject.SetActive(false);
@@ -133,7 +131,6 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            restartButton.gameObject.SetActive(false);
             toMenu.gameObject.SetActive(false);
         }
     }
@@ -147,7 +144,6 @@ public class UIManager : MonoBehaviour
         shopButton.gameObject.SetActive(false);
         adBlock.gameObject.SetActive(true);
         title.gameObject.SetActive(false);
-        restartButton.gameObject.SetActive(false);
         currentCurrency.gameObject.SetActive(false);
         toMenu.gameObject.SetActive(true);
         replayForMore.gameObject.SetActive(false);

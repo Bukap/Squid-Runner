@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class ItemDisplay : MonoBehaviour
 {
     [SerializeField] private GameObject item;
+    [SerializeField] private GameObject itemDisplayer;
     [SerializeField] private Sprite itemOverview;
 
     [SerializeField] private int normalPrice;
@@ -14,13 +15,13 @@ public class ItemDisplay : MonoBehaviour
     [SerializeField] private Text premiumPriceDisplay;
 
     [SerializeField] private bool bought;
-    [SerializeField] private bool usedCurrently;
 
-    [SerializeField] protected GameObject Check;
-    [SerializeField] protected GameObject Cross;
+    [SerializeField] protected GameObject CheckNormal;
+    [SerializeField] protected GameObject CheckAndPicked;
+    [SerializeField] protected GameObject CheckBackground;
 
-    [SerializeField] private GameObject Locked;
-    [SerializeField] private GameObject Unlocked;
+    [SerializeField] private GameObject normalCurrencyIcon;
+    [SerializeField] private GameObject premiumlCurrencyIcon;
 
     private GameManager gameManager;
 
@@ -30,11 +31,12 @@ public class ItemDisplay : MonoBehaviour
     }
     void Start()
     {
-        this.gameObject.GetComponent<Image>().sprite = itemOverview;
+        itemDisplayer.GetComponent<Image>().sprite = itemOverview;
         normalPriceDisplay.text = normalPrice.ToString();
         premiumPriceDisplay.text = premiumPrice.ToString();
-        Unlocked.SetActive(false);
-        Check.SetActive(false);
+        CheckAndPicked.SetActive(false);
+        CheckNormal.SetActive(false);
+        CheckBackground.SetActive(false);
 
         if (bought)
         {
@@ -45,15 +47,28 @@ public class ItemDisplay : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(gameManager.currentArena||gameManager.currentBall||gameManager.currentCharacter||gameManager.currentWatcher == item)
+        if (bought)
         {
-            Check.SetActive(true);
-            Cross.SetActive(false);
+            CheckBackground.SetActive(true);
+            if (gameManager.currentArena.name == item.name + "(Clone)" || gameManager.currentBall.name == item.name + "(Clone)" || gameManager.currentCharacter.name == item.name + "(Clone)" || gameManager.currentWatcher.name == item.name + "(Clone)")
+            {
+                CheckAndPicked.SetActive(true);
+                CheckNormal.SetActive(false);
+                Debug.Log(item.name);
+
+            }
+            else
+            {
+                CheckAndPicked.SetActive(false);
+                CheckNormal.SetActive(true);
+            }
+
         }
         else
         {
-            Check.SetActive(false);
-            Cross.SetActive(true);
+            CheckBackground.SetActive(false);
+            CheckAndPicked.SetActive(false);
+            CheckNormal.SetActive(false);
         }
     }
 
@@ -65,8 +80,9 @@ public class ItemDisplay : MonoBehaviour
             bought = true;
             normalPriceDisplay.text = null;
             premiumPriceDisplay.text = null;
-            Unlocked.SetActive(true);
-            Locked.SetActive(false);
+            normalCurrencyIcon.SetActive(false);
+            premiumlCurrencyIcon.SetActive(false);
+
             return currency;
         }
         else
