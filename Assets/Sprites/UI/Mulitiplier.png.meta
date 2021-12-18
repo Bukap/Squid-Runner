@@ -1,7 +1,16 @@
 fileFormatVersion: 2
 guid: b53aa1142fec35a4dbc0f7186ea5d03f
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -1819067159476271338
+    second: Mulitiplier_0
+  - first:
+      213: 176734880499722803
+    second: Mulitiplier_1
+  - first:
+      213: -7914467286122140721
+    second: Mulitiplier_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -125,11 +134,74 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Mulitiplier_0
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 69
+        width: 71
+        height: 589
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61786d86e0061c6e0800000000000000
+      internalID: -1819067159476271338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mulitiplier_1
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 9
+        width: 120
+        height: 653
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33a6b9bff63e37200800000000000000
+      internalID: 176734880499722803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mulitiplier_2
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 354
+        width: 24
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcb6d389fe92a2290800000000000000
+      internalID: -7914467286122140721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f7c545863f030ba4a98c333701ad07d9
     internalID: 0
     vertices: []
     indices: 

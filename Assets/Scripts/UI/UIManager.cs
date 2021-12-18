@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class UIManager : MonoBehaviour
 {
     private GameManager gameManager;
@@ -32,9 +31,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject shopCharacterPageButton;
     [SerializeField] private GameObject shopWatcherPageButton;
     #endregion
+
     private Text currentCurrencyText;
     private Text gameCurrencyText;
     private Text premiumCurrencyText;
+    private Text currentMultiplyerText;
+
+    private Text victoryDefeat;
 
     public int UIState = 0;
 
@@ -48,6 +51,10 @@ public class UIManager : MonoBehaviour
         currentCurrencyText = currentCurrency.GetComponentInChildren<Text>();
         gameCurrencyText = gameCurrency.GetComponentInChildren<Text>();
         premiumCurrencyText = premiumCurrency.GetComponentInChildren<Text>();
+        currentMultiplyerText = currentCurrency.transform.Find("Mark").GetComponentInChildren<Text>();
+
+        victoryDefeat = replayForMore.GetComponentInChildren<Text>();
+
     }
 
 
@@ -66,9 +73,12 @@ public class UIManager : MonoBehaviour
                 break;
         }
 
-        currentCurrencyText.text = ((int)scoreManager.currentScore).ToString();     //Displaying the current score on the screen
+        currentCurrencyText.text = ((int)scoreManager.currentScore).ToString();                 //Displaying the current score on the screen
+        currentMultiplyerText.text = "x" + ((int)scoreManager.sprintMultiplier).ToString();     //Displaying the multiplier on the screen
+
         gameCurrencyText.text = gameManager.NormalCurrency.ToString();               // Displaying current normal currency
         premiumCurrencyText.text = gameManager.PremiumCurrency.ToString();          // Displaying current premium currency
+
     }
 
     private void mainMenuDisplayUI()                        // There have to be another way. Find an optiomal way to do the UI system
@@ -119,19 +129,23 @@ public class UIManager : MonoBehaviour
 
         if (gameManager.defeat || gameManager.finish)
         {
-            if(!replayForMore.activeInHierarchy)
+            if (!replayForMore.activeInHierarchy)
                 replayForMore.gameObject.SetActive(true);
 
             if (scoreManager.replay || gameManager.defeat)
+            {
                 replayForMore.transform.Find("GoIn").gameObject.SetActive(false);
+                if(gameManager.defeat)
+                    victoryDefeat.text = "You Died";
+                else
+                    victoryDefeat.text = "Victory";
+            }
             else
+            {
                 replayForMore.transform.Find("GoIn").gameObject.SetActive(true);
-
-            toMenu.gameObject.SetActive(true);
-        }
-        else
-        {
-            toMenu.gameObject.SetActive(false);
+                replayForMore.transform.Find("GoIn").GetChild(0).GetChild(0).GetComponent<Text>().text = "x" + scoreManager.ReplayMultiplayer.ToString();
+                victoryDefeat.text = "Victory";
+            }
         }
     }
 
