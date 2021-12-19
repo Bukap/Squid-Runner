@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ItemDisplay : MonoBehaviour
 {
-    [SerializeField] private GameObject item;
+    [SerializeField] public GameObject item;
     [SerializeField] private GameObject itemDisplayer;
     [SerializeField] private Sprite itemOverview;
 
@@ -14,7 +14,8 @@ public class ItemDisplay : MonoBehaviour
     [SerializeField] private Text normalPriceDisplay;
     [SerializeField] private Text premiumPriceDisplay;
 
-    [SerializeField] private bool bought;
+    [SerializeField] public bool bought;
+    [SerializeField] public bool picked;
 
     [SerializeField] protected GameObject CheckNormal;
     [SerializeField] protected GameObject CheckAndPicked;
@@ -54,13 +55,13 @@ public class ItemDisplay : MonoBehaviour
             {
                 CheckAndPicked.SetActive(true);
                 CheckNormal.SetActive(false);
-                Debug.Log(item.name);
-
+                picked = true;
             }
             else
             {
                 CheckAndPicked.SetActive(false);
                 CheckNormal.SetActive(true);
+                picked = false;
             }
 
         }

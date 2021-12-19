@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public UIManager UImanager;
     public CharacterControl characterControl;
     public ScoreManager scoreManager;
+    public ShopManager shopManager;
 
     [SerializeField] private GameObject[] characters;       //An array of all NPC characters
 
@@ -37,13 +38,14 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public GameObject currentCharacter;
     [SerializeField] public GameObject currentArena;
-    [SerializeField] public GameObject currentWatcher;         // OGARNIJ OBIEKTY W GRZE TAK ABY BYLY LATWE DO PODMIANY <----!
+    [SerializeField] public GameObject currentWatcher;         
     [SerializeField] public GameObject currentBall;
 
 
 
     void Awake()
     {
+        //SaveSystem.LoadProgress();
         instantiateObjects();
     }
 
@@ -58,6 +60,7 @@ public class GameManager : MonoBehaviour
     {
         redGreen();
         gameOver();
+        //SaveSystem.SaveProgress(scoreManager,this,shopManager);
     }
 
     private void redGreen()
@@ -122,6 +125,7 @@ public class GameManager : MonoBehaviour
         characterControl = currentCharacter.GetComponent<CharacterControl>();
         scoreManager = FindObjectOfType<ScoreManager>();
         UImanager = FindObjectOfType<UIManager>();
+        shopManager = FindObjectOfType<ShopManager>();
         #endregion
         #region scoreManagers accesess
         scoreManager.gameManager = this.GetComponent<GameManager>();

@@ -26,12 +26,12 @@ public class CharacterControl : MonoBehaviour
     private float currentCameraSpeed;
     [SerializeField] private Vector3 cameraPositionGameplay;
     [SerializeField] public Vector3 cameraPositionElse;
-
     #endregion
 
     //Physics
     public Rigidbody rigidbody;
 
+    private Animator animator;
     void Awake()
     {
         Assert.IsTrue(acceleration > 0);
@@ -52,6 +52,9 @@ public class CharacterControl : MonoBehaviour
         scoreManager.characterControl = GetComponent<CharacterControl>();
         gameManager.characterControl = GetComponent<CharacterControl>();
 
+        animator = this.GetComponent<Animator>();
+        animator.speed = 0;
+
         camera.transform.position =  cameraPositionElse;
         camera.transform.LookAt(gameManager.currentArena.transform.position);
     }
@@ -61,6 +64,7 @@ public class CharacterControl : MonoBehaviour
         if (!gameManager.defeat && !gameManager.finish && gameManager.UImanager.UIState == 1)        // Needed to separate the accelerating to keep a steady framework and get the button pressed read
         {
             accelerating();
+            animator.speed = speed / topSpeed;
         }
     }
 

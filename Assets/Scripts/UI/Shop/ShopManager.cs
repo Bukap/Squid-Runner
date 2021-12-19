@@ -4,18 +4,8 @@ using UnityEngine;
 
 public class ShopManager : MonoBehaviour
 {
+    [SerializeField] public GameObject CharacterPage;
+    [SerializeField] public GameObject WatcherPage;
+    [SerializeField] public GameObject ArenaPage;
 
-
-
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

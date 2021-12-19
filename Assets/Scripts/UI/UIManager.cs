@@ -27,7 +27,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject shopBallPage;
 
     [SerializeField] private GameObject shopArenaPageButton;
-    [SerializeField] private GameObject shopBallPageButton;
     [SerializeField] private GameObject shopCharacterPageButton;
     [SerializeField] private GameObject shopWatcherPageButton;
     #endregion
@@ -100,7 +99,6 @@ public class UIManager : MonoBehaviour
         shopBallPage.gameObject.SetActive(false);
 
         shopArenaPageButton.gameObject.SetActive(false);
-        shopBallPageButton.gameObject.SetActive(false);
         shopCharacterPageButton.gameObject.SetActive(false);
         shopWatcherPageButton.gameObject.SetActive(false);
     }
@@ -123,7 +121,6 @@ public class UIManager : MonoBehaviour
         shopBallPage.gameObject.SetActive(false);
 
         shopArenaPageButton.gameObject.SetActive(false);
-        shopBallPageButton.gameObject.SetActive(false);
         shopCharacterPageButton.gameObject.SetActive(false);
         shopWatcherPageButton.gameObject.SetActive(false);
 
@@ -163,7 +160,6 @@ public class UIManager : MonoBehaviour
         replayForMore.gameObject.SetActive(false);
 
         shopArenaPageButton.gameObject.SetActive(true);
-        shopBallPageButton.gameObject.SetActive(true);
         shopCharacterPageButton.gameObject.SetActive(true);
         shopWatcherPageButton.gameObject.SetActive(true);
     }
