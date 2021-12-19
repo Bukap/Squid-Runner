@@ -11,6 +11,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Arena Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6388572428523103386, guid: b9d496a7b303410409b531e22b7ef7db, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388572428523103396, guid: b9d496a7b303410409b531e22b7ef7db, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 79f0634b5a51bea4680e8298e54c49ee, type: 2}
     - target: {fileID: 6388572428523103398, guid: b9d496a7b303410409b531e22b7ef7db, type: 3}
       propertyPath: m_RootOrder
       value: 0

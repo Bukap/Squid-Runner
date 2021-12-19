@@ -168,6 +168,7 @@ public class UIManager : MonoBehaviour
     {
         UIState = 1; 
         gameManager.restart();
+        gameManager.SaveContent();
     }       //Button function for starting the game
 
     public void RestartGame()
@@ -175,6 +176,8 @@ public class UIManager : MonoBehaviour
         UIState = 1;
         scoreManager.AddToTotalScore();
         gameManager.restart();
+        gameManager.SaveContent();
+
     }       //Button function for restarting the game
 
     public void PlayForMore()
@@ -182,11 +185,15 @@ public class UIManager : MonoBehaviour
         UIState = 1;
         scoreManager.ReplayForMore();
         gameManager.restart();
+        gameManager.SaveContent();
+
     }
 
     public void EnterShop()
     {
         UIState = 2;
+        gameManager.SaveContent();
+
     }
 
     public void EnterMenu()
@@ -196,6 +203,8 @@ public class UIManager : MonoBehaviour
         characterControl.camera.transform.position = characterControl.cameraPositionElse;
         characterControl.camera.transform.LookAt(gameManager.currentArena.transform.position);
         gameManager.restart();
+        gameManager.SaveContent();
+
     }
 
     public void EnterArenaPage()
@@ -205,6 +214,8 @@ public class UIManager : MonoBehaviour
         shopCharacterPage.gameObject.SetActive(false);
         shopWatcherPage.gameObject.SetActive(false);
         characterControl.camera.transform.position = characterControl.cameraPositionElse;
+        gameManager.SaveContent();
+
     }
     public void EnterBallPage()
     {
@@ -212,6 +223,8 @@ public class UIManager : MonoBehaviour
         shopBallPage.gameObject.SetActive(true);
         shopCharacterPage.gameObject.SetActive(false);
         shopWatcherPage.gameObject.SetActive(false);
+        gameManager.SaveContent();
+
     }
     public void EnterCharacterPage()
     {
@@ -219,6 +232,8 @@ public class UIManager : MonoBehaviour
         shopBallPage.gameObject.SetActive(false);
         shopCharacterPage.gameObject.SetActive(true);
         shopWatcherPage.gameObject.SetActive(false);
+        gameManager.SaveContent();
+
     }
     public void EnterWatcherPage()
     {
@@ -226,6 +241,7 @@ public class UIManager : MonoBehaviour
         shopBallPage.gameObject.SetActive(false);
         shopCharacterPage.gameObject.SetActive(false);
         shopWatcherPage.gameObject.SetActive(true);
+        gameManager.SaveContent();
     }
 
 }

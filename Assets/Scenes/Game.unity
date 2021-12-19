@@ -1678,21 +1678,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1809793844, guid: 68f9dbed046989d4c929c9caf928cdd0, type: 3}
-      propertyPath: MaxMultiplyer
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1809793844, guid: 68f9dbed046989d4c929c9caf928cdd0, type: 3}
-      propertyPath: MinMultiplyer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1809793844, guid: 68f9dbed046989d4c929c9caf928cdd0, type: 3}
       propertyPath: multiplierSlider
       value: 
       objectReference: {fileID: 719462239}
-    - target: {fileID: 1809793844, guid: 68f9dbed046989d4c929c9caf928cdd0, type: 3}
-      propertyPath: ReplayMultiplayer
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 848933355692079425, guid: 68f9dbed046989d4c929c9caf928cdd0, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1738,29 +1726,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 848933355692079438, guid: 68f9dbed046989d4c929c9caf928cdd0, type: 3}
-      propertyPath: currentBall
-      value: 
-      objectReference: {fileID: 2183544047383946179, guid: 6aa8fd35c3329b24084bd3df2b92e68b, type: 3}
-    - target: {fileID: 848933355692079438, guid: 68f9dbed046989d4c929c9caf928cdd0, type: 3}
-      propertyPath: currentArena
-      value: 
-      objectReference: {fileID: 8781713216511309306, guid: 8dea7d320c60eb54f8ecdc1f1560f3e2, type: 3}
-    - target: {fileID: 848933355692079438, guid: 68f9dbed046989d4c929c9caf928cdd0, type: 3}
-      propertyPath: currentWatcher
-      value: 
-      objectReference: {fileID: 8770347874018859448, guid: b7f9e336780ae2b4b9ff2649908d46fc, type: 3}
-    - target: {fileID: 848933355692079438, guid: 68f9dbed046989d4c929c9caf928cdd0, type: 3}
-      propertyPath: PremiumCurrency
-      value: 600
-      objectReference: {fileID: 0}
-    - target: {fileID: 848933355692079438, guid: 68f9dbed046989d4c929c9caf928cdd0, type: 3}
       propertyPath: restartPosition
       value: 
       objectReference: {fileID: 501118465}
-    - target: {fileID: 848933355692079438, guid: 68f9dbed046989d4c929c9caf928cdd0, type: 3}
-      propertyPath: currentCharacter
-      value: 
-      objectReference: {fileID: 7763792593216872700, guid: b6d4e5ae0d0b93b4a98b8a8cbf2b64a2, type: 3}
     - target: {fileID: 848933355692079439, guid: 68f9dbed046989d4c929c9caf928cdd0, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -2656,22 +2624,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainCamera
       objectReference: {fileID: 0}
-    - target: {fileID: 7589132730453852354, guid: 76e01452dba33474c8d2d604f1df4e5c, type: 3}
-      propertyPath: m_ClearFlags
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7589132730453852354, guid: 76e01452dba33474c8d2d604f1df4e5c, type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0.21960786
-      objectReference: {fileID: 0}
-    - target: {fileID: 7589132730453852354, guid: 76e01452dba33474c8d2d604f1df4e5c, type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0.21960786
-      objectReference: {fileID: 0}
-    - target: {fileID: 7589132730453852354, guid: 76e01452dba33474c8d2d604f1df4e5c, type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0.21960786
-      objectReference: {fileID: 0}
     - target: {fileID: 7589132730453852355, guid: 76e01452dba33474c8d2d604f1df4e5c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2716,8 +2668,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1402793045, guid: 76e01452dba33474c8d2d604f1df4e5c, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76e01452dba33474c8d2d604f1df4e5c, type: 3}
 --- !u!1001 &8358904265623474531
 PrefabInstance:

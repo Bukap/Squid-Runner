@@ -44,23 +44,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 504bb3aa8563b3a41a2da5f2e6fb1f6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  watcher: {fileID: 0}
   UImanager: {fileID: 0}
+  characterControl: {fileID: 0}
+  scoreManager: {fileID: 0}
+  shopManager: {fileID: 0}
   characters: []
   shortestTime: 4
   longestTime: 10
   timeToSwitch: 2
   timer: 0
+  CrossLine: 0
   ball: {fileID: 0}
   distance: 20
   hight: 3
   restartPosition: {fileID: 0}
   countDown: 3
   NormalCurrency: 0
-  PremiumCurrency: 0
-  currentCharacter: {fileID: 8840555674267120848, guid: 7c4ed92371a8fcc40b13bb9b51790c02, type: 3}
-  currentArena: {fileID: 6388572428523103386, guid: b9d496a7b303410409b531e22b7ef7db, type: 3}
-  currentWatcher: {fileID: 1992504185718632357, guid: 373a3356377adb94caac2945731364e3, type: 3}
-  currentBall: {fileID: 591428084686126781, guid: c8fa3d39c4aeafe4c984550e235f78d0, type: 3}
+  PremiumCurrency: 600
+  currentCharacter: {fileID: 7763792593216872700, guid: b6d4e5ae0d0b93b4a98b8a8cbf2b64a2, type: 3}
+  currentArena: {fileID: 8781713216511309306, guid: 8dea7d320c60eb54f8ecdc1f1560f3e2, type: 3}
+  currentWatcher: {fileID: 8770347874018859448, guid: b7f9e336780ae2b4b9ff2649908d46fc, type: 3}
+  currentBall: {fileID: 2183544047383946179, guid: 6aa8fd35c3329b24084bd3df2b92e68b, type: 3}
 --- !u!114 &1809793844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,3 +85,10 @@ MonoBehaviour:
   incrementValue: 1
   increaseFrequency: 0.1
   clock: 0
+  MinMultiplyer: 2
+  MaxMultiplyer: 4
+  ReplayMultiplayer: 4
+  replay: 0
+  characterControl: {fileID: 0}
+  gameManager: {fileID: 0}
+  multiplierSlider: {fileID: 0}

@@ -49,7 +49,6 @@ public class Watcher : MonoBehaviour
         }
 
         AnimatorClipInfo[] currentClip = this.animator.GetCurrentAnimatorClipInfo(0);
-        Debug.Log(currentClip[0].clip.name);
 
         if (currentClip[0].clip.name == "RotateToRed" && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)     //Gives true or false based on the current rotation    
             isWatching = true;                             

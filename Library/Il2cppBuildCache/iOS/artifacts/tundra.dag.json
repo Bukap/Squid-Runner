@@ -47,7 +47,9 @@
         "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/UnityEngine.TextRenderingModule.dll",
         "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/UnityEngine.TilemapModule.dll",
         "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/UnityEngine.UI.dll",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/UnityEngine.UIModule.dll"
+        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/UnityEngine.UIModule.dll",
+        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/UnityEngine.UnityAnalyticsModule.dll",
+        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/UnityEngine.UnityWebRequestModule.dll"
       ],
       "Outputs": [],
       "TargetDirectories": [

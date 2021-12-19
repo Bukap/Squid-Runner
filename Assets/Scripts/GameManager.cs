@@ -45,7 +45,6 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        //SaveSystem.LoadProgress();
         instantiateObjects();
     }
 
@@ -53,14 +52,14 @@ public class GameManager : MonoBehaviour
     {
         getComponents();
         finish = true;
-        green = true;        
+        green = true;
+        LoadContent();
     }
 
     void Update()
     {
         redGreen();
         gameOver();
-        //SaveSystem.SaveProgress(scoreManager,this,shopManager);
     }
 
     private void redGreen()
@@ -134,6 +133,26 @@ public class GameManager : MonoBehaviour
         #region watcher accesses
         watcher.gameManager = this.GetComponent<GameManager>();
         #endregion
+    }
+
+    public void SaveContent()
+    {
+        SaveSystem.SaveProgress(scoreManager, this.GetComponent<GameManager>(), shopManager);
+    }
+
+    public void LoadContent()
+    {
+        scoreManager.ReplayMultiplayer = SaveSystem.LoadProgress().ReplayMultiplier;
+
+        NormalCurrency = SaveSystem.LoadProgress().NormalCurrency;
+        PremiumCurrency = SaveSystem.LoadProgress().PremiumCurrency;
+
+        shopManager.CharacterPage.GetComponent<Page>().isPicked = new List<bool>(SaveSystem.LoadProgress().CurrentCharacterPicked);
+        shopManager.WatcherPage.GetComponent<Page>().isPicked = new List<bool>(SaveSystem.LoadProgress().CurrentWatcherPicked);
+        shopManager.ArenaPage.GetComponent<Page>().isPicked = new List<bool>(SaveSystem.LoadProgress().CurrentArenaPicked);
+        shopManager.CharacterPage.GetComponent<Page>().isBought = new List<bool>(SaveSystem.LoadProgress().CharacterPageItemsBought);
+        shopManager.WatcherPage.GetComponent<Page>().isBought = new List<bool>(SaveSystem.LoadProgress().ArenaPageItemsBought);
+        shopManager.ArenaPage.GetComponent<Page>().isBought = new List<bool>(SaveSystem.LoadProgress().WatcherPageItemsBought);
     }
 
 }

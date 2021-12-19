@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class SaveFile
 {
     public float ReplayMultiplier;
@@ -9,13 +10,13 @@ public class SaveFile
     public int NormalCurrency;
     public int PremiumCurrency;
 
-    public bool[] CurrentCharacterPicked;
-    public bool[] CurrentWatcherPicked;
-    public bool[] CurrentArenaPicked;
+    public List<bool> CurrentCharacterPicked;
+    public List<bool> CurrentWatcherPicked;
+    public List<bool> CurrentArenaPicked;
 
-    public bool[] CharacterPageItemsBought;
-    public bool[] ArenaPageItemsBought;
-    public bool[] WatcherPageItemsBought;
+    public List<bool> CharacterPageItemsBought;
+    public List<bool> ArenaPageItemsBought;
+    public List<bool> WatcherPageItemsBought;
 
     public SaveFile (ScoreManager scoreManager, GameManager gameManager, ShopManager shopManager)
     {
@@ -24,31 +25,12 @@ public class SaveFile
         NormalCurrency = gameManager.NormalCurrency;
         PremiumCurrency = gameManager.PremiumCurrency;
 
-        for(int i = 0;i< shopManager.CharacterPage.GetComponent<Page>().isPicked.Count; i++)
-        {
-            CurrentCharacterPicked[i] = shopManager.CharacterPage.GetComponent<Page>().isPicked[i];
-        }
-        for (int i = 0; i < shopManager.WatcherPage.GetComponent<Page>().isPicked.Count; i++)
-        {
-            CurrentWatcherPicked[i] = shopManager.WatcherPage.GetComponent<Page>().isPicked[i];
-        }
-        for (int i = 0; i < shopManager.ArenaPage.GetComponent<Page>().isPicked.Count; i++)
-        {
-            CurrentArenaPicked[i] = shopManager.ArenaPage.GetComponent<Page>().isPicked[i];
-        }
-
-        for (int i = 0; i < shopManager.CharacterPage.GetComponent<Page>().isBought.Count; i++)
-        {
-            CharacterPageItemsBought[i] = shopManager.CharacterPage.GetComponent<Page>().isBought[i];
-        }
-        for (int i = 0; i < shopManager.WatcherPage.GetComponent<Page>().isBought.Count; i++)
-        {
-            WatcherPageItemsBought[i] = shopManager.WatcherPage.GetComponent<Page>().isBought[i];
-        }
-        for (int i = 0; i < shopManager.ArenaPage.GetComponent<Page>().isBought.Count; i++)
-        {
-            ArenaPageItemsBought[i] = shopManager.ArenaPage.GetComponent<Page>().isBought[i];
-        }
+        CurrentCharacterPicked = new List<bool>(shopManager.CharacterPage.GetComponent<Page>().isPicked);
+        CurrentWatcherPicked = new List<bool>(shopManager.WatcherPage.GetComponent<Page>().isPicked);
+        CurrentArenaPicked = new List<bool>(shopManager.ArenaPage.GetComponent<Page>().isPicked);
+        CharacterPageItemsBought = new List<bool>(shopManager.CharacterPage.GetComponent<Page>().isBought);
+        ArenaPageItemsBought = new List<bool>(shopManager.WatcherPage.GetComponent<Page>().isBought);
+        WatcherPageItemsBought = new List<bool>(shopManager.ArenaPage.GetComponent<Page>().isBought);
     }
 
 }

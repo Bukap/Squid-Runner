@@ -7,7 +7,7 @@ public static class SaveSystem {
     public static void SaveProgress(ScoreManager scoreManager, GameManager gameManager, ShopManager shopManager)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + ".squid";
+        string path = Application.persistentDataPath + "/game.squid";
         FileStream stream = new FileStream(path, FileMode.Create);
 
         SaveFile file = new SaveFile(scoreManager, gameManager, shopManager);
@@ -18,7 +18,7 @@ public static class SaveSystem {
 
     public static SaveFile LoadProgress()
     {
-        string path = Application.persistentDataPath + ".squid";
+        string path = Application.persistentDataPath + "/game.squid";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();

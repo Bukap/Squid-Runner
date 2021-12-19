@@ -66,6 +66,9 @@ public class CharacterControl : MonoBehaviour
             accelerating();
             animator.speed = speed / topSpeed;
         }
+        else
+            animator.speed = 0;
+
     }
 
     // Update is called once per frame
