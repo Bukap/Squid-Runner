@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.PostProcessing;
 
 public class UIManager : MonoBehaviour
 {
@@ -20,15 +22,18 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject adBlock;
     [SerializeField] private GameObject title;
     [SerializeField] private GameObject toMenu;
+    [SerializeField] private GameObject premiumShopButton;
 
     [SerializeField] private GameObject shopCharacterPage;
     [SerializeField] private GameObject shopArenaPage;
     [SerializeField] private GameObject shopWatcherPage;
-    [SerializeField] private GameObject shopBallPage;
+    [SerializeField] private GameObject shopPremiumPage;
 
     [SerializeField] private GameObject shopArenaPageButton;
     [SerializeField] private GameObject shopCharacterPageButton;
     [SerializeField] private GameObject shopWatcherPageButton;
+
+    [SerializeField] private PostProcessVolume blur;
     #endregion
 
     private Text currentCurrencyText;
@@ -53,7 +58,7 @@ public class UIManager : MonoBehaviour
         currentMultiplyerText = currentCurrency.transform.Find("Mark").GetComponentInChildren<Text>();
 
         victoryDefeat = replayForMore.GetComponentInChildren<Text>();
-
+        blur.weight = 1;
     }
 
 
@@ -92,15 +97,18 @@ public class UIManager : MonoBehaviour
         currentCurrency.gameObject.SetActive(false);
         toMenu.gameObject.SetActive(false);
         replayForMore.gameObject.SetActive(false);
+        premiumShopButton.gameObject.SetActive(false);
 
         shopCharacterPage.gameObject.SetActive(false);
         shopArenaPage.gameObject.SetActive(false);
         shopWatcherPage.gameObject.SetActive(false);
-        shopBallPage.gameObject.SetActive(false);
+        shopPremiumPage.gameObject.SetActive(false);
 
         shopArenaPageButton.gameObject.SetActive(false);
         shopCharacterPageButton.gameObject.SetActive(false);
         shopWatcherPageButton.gameObject.SetActive(false);
+
+        blur.weight = 1;
     }
 
     private void gameplayDisplayUI()
@@ -114,15 +122,18 @@ public class UIManager : MonoBehaviour
         title.gameObject.SetActive(false);
         currentCurrency.gameObject.SetActive(true);
         replayForMore.gameObject.SetActive(false);
+        premiumShopButton.gameObject.SetActive(false);
 
         shopCharacterPage.gameObject.SetActive(false);
         shopArenaPage.gameObject.SetActive(false);
         shopWatcherPage.gameObject.SetActive(false);
-        shopBallPage.gameObject.SetActive(false);
+        shopPremiumPage.gameObject.SetActive(false);
 
         shopArenaPageButton.gameObject.SetActive(false);
         shopCharacterPageButton.gameObject.SetActive(false);
         shopWatcherPageButton.gameObject.SetActive(false);
+
+        blur.weight = 0;
 
         if (gameManager.defeat || gameManager.finish)
         {
@@ -143,6 +154,7 @@ public class UIManager : MonoBehaviour
                 replayForMore.transform.Find("GoIn").GetChild(0).GetChild(0).GetComponent<Text>().text = "x" + scoreManager.ReplayMultiplayer.ToString();
                 victoryDefeat.text = "Victory";
             }
+            blur.weight = 1;
         }
     }
 
@@ -158,10 +170,12 @@ public class UIManager : MonoBehaviour
         currentCurrency.gameObject.SetActive(false);
         toMenu.gameObject.SetActive(true);
         replayForMore.gameObject.SetActive(false);
+        premiumShopButton.gameObject.SetActive(true);
 
         shopArenaPageButton.gameObject.SetActive(true);
         shopCharacterPageButton.gameObject.SetActive(true);
         shopWatcherPageButton.gameObject.SetActive(true);
+        blur.weight = 1;
     }
 
     public void StartGame()
@@ -210,17 +224,17 @@ public class UIManager : MonoBehaviour
     public void EnterArenaPage()
     {
         shopArenaPage.gameObject.SetActive(true);
-        shopBallPage.gameObject.SetActive(false);
+        shopPremiumPage.gameObject.SetActive(false);
         shopCharacterPage.gameObject.SetActive(false);
         shopWatcherPage.gameObject.SetActive(false);
         characterControl.camera.transform.position = characterControl.cameraPositionElse;
         gameManager.SaveContent();
 
     }
-    public void EnterBallPage()
+    public void EnterPremiumPage()
     {
         shopArenaPage.gameObject.SetActive(false);
-        shopBallPage.gameObject.SetActive(true);
+        shopPremiumPage.gameObject.SetActive(true);
         shopCharacterPage.gameObject.SetActive(false);
         shopWatcherPage.gameObject.SetActive(false);
         gameManager.SaveContent();
@@ -229,7 +243,7 @@ public class UIManager : MonoBehaviour
     public void EnterCharacterPage()
     {
         shopArenaPage.gameObject.SetActive(false);
-        shopBallPage.gameObject.SetActive(false);
+        shopPremiumPage.gameObject.SetActive(false);
         shopCharacterPage.gameObject.SetActive(true);
         shopWatcherPage.gameObject.SetActive(false);
         gameManager.SaveContent();
@@ -238,10 +252,9 @@ public class UIManager : MonoBehaviour
     public void EnterWatcherPage()
     {
         shopArenaPage.gameObject.SetActive(false);
-        shopBallPage.gameObject.SetActive(false);
+        shopPremiumPage.gameObject.SetActive(false);
         shopCharacterPage.gameObject.SetActive(false);
         shopWatcherPage.gameObject.SetActive(true);
         gameManager.SaveContent();
     }
-
 }

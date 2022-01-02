@@ -124,7 +124,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2811977224184295767}
         m_TargetAssemblyTypeName: ItemDisplay, Assembly-CSharp
-        m_MethodName: BuyItemPremium
+        m_MethodName: ConfirmPurchase
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -134,6 +134,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 2811977224184295767}
+        m_TargetAssemblyTypeName: ItemDisplay, Assembly-CSharp
+        m_MethodName: buttonBindingPremium
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1534547870942647504
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,11 +403,14 @@ MonoBehaviour:
   normalPriceDisplay: {fileID: 6695479399502104367}
   premiumPriceDisplay: {fileID: 8671488811587119620}
   bought: 0
+  picked: 0
   CheckNormal: {fileID: 4472958669780393177}
   CheckAndPicked: {fileID: 8712252086319827919}
   CheckBackground: {fileID: 1534547870942647504}
   normalCurrencyIcon: {fileID: 5130178161169583394}
   premiumlCurrencyIcon: {fileID: 3067685838690069966}
+  purchaseConfirmation: {fileID: 4341845001169861384, guid: bd5c7d803d92ab04b957ab43facf97ae, type: 3}
+  purchaseConfirmationDisplay: {fileID: 0}
 --- !u!114 &5976025393646211256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -730,7 +745,19 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2811977224184295767}
         m_TargetAssemblyTypeName: ItemDisplay, Assembly-CSharp
-        m_MethodName: BuyItemNormal
+        m_MethodName: ConfirmPurchase
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2811977224184295767}
+        m_TargetAssemblyTypeName: ItemDisplay, Assembly-CSharp
+        m_MethodName: buttonBindingNormal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -24,7 +24,11 @@ public class ItemDisplay : MonoBehaviour
     [SerializeField] private GameObject normalCurrencyIcon;
     [SerializeField] private GameObject premiumlCurrencyIcon;
 
+    [SerializeField] private GameObject purchaseConfirmation;
+    [SerializeField] private GameObject purchaseConfirmationDisplay;
+
     private GameManager gameManager;
+    private GameObject canvas;
 
     void Awake()
     {
@@ -38,6 +42,7 @@ public class ItemDisplay : MonoBehaviour
         CheckAndPicked.SetActive(false);
         CheckNormal.SetActive(false);
         CheckBackground.SetActive(false);
+        canvas = FindObjectOfType<Canvas>().gameObject;
 
         if (bought)
         {
@@ -93,20 +98,51 @@ public class ItemDisplay : MonoBehaviour
         }
     }
 
+    public void ConfirmPurchase()
+    {
+        if (purchaseConfirmationDisplay == null)
+        {
+            purchaseConfirmationDisplay = Instantiate(purchaseConfirmation, this.transform);
+        }
+
+    }
+
+    public void buttonBindingNormal()
+    {
+        purchaseConfirmation.transform.Find("Confirm").GetComponent<Button>().onClick.AddListener(delegate { BuyItemNormal(); });
+        purchaseConfirmation.transform.Find("Deny").GetComponent<Button>().onClick.AddListener(delegate { destroyConfirmation(); });
+    }
+
+    public void buttonBindingPremium()
+    {
+        purchaseConfirmation.transform.Find("Confirm").GetComponent<Button>().onClick.AddListener(() => { BuyItemPremium(); });
+        purchaseConfirmation.transform.Find("Deny").GetComponent<Button>().onClick.AddListener(delegate { destroyConfirmation(); });
+    }
+
+    private void destroyConfirmation()
+    {
+        Destroy(purchaseConfirmationDisplay);
+    }
+
     public void BuyItemPremium()        //Buys the item for premium currency
     {
-        if(!bought)
+        if (!bought)
+        {
             gameManager.PremiumCurrency = BuyItem(gameManager.PremiumCurrency, premiumPrice);
+            destroyConfirmation();
+        }
         else
             Debug.Log("Posiadane");
     }
     public void BuyItemNormal()         //Buys the item for in game currency
     {
         if (!bought)
+        {
             gameManager.NormalCurrency = BuyItem(gameManager.NormalCurrency, normalPrice);
+            destroyConfirmation();
+        }
         else
             Debug.Log("Posiadane");
-        Debug.Log(this.transform.parent.parent.name);
     }
 
     public void ItemReplacement()
