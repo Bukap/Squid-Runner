@@ -9,7 +9,24 @@ public class Page : MonoBehaviour
     public List<bool> isBought;
     public List<bool> isPicked;
 
+
+
     void Start()
+    {
+        PageLoad();
+        PageUpdate();
+    }
+
+    public void PageLoad()
+    {
+        for (int i = 0; i < objects.Count; i++)
+        {
+            objects[i].GetComponent<ItemDisplay>().bought = isBought[i];
+            objects[i].GetComponent<ItemDisplay>().picked = isPicked[i];
+        }
+    }
+
+    public void PageUpdate()
     {
         for(int i=0; i < objects.Count; i++)
         {

@@ -24,30 +24,33 @@ public class ItemDisplay : MonoBehaviour
     [SerializeField] private GameObject normalCurrencyIcon;
     [SerializeField] private GameObject premiumlCurrencyIcon;
 
-    [SerializeField] private GameObject purchaseConfirmation;
-    [SerializeField] private GameObject purchaseConfirmationDisplay;
-
     private GameManager gameManager;
-    private GameObject canvas;
+    private UIManager uIManager;
+    private Page page;
 
     void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
-    }
-    void Start()
-    {
+
         itemDisplayer.GetComponent<Image>().sprite = itemOverview;
         normalPriceDisplay.text = normalPrice.ToString();
         premiumPriceDisplay.text = premiumPrice.ToString();
         CheckAndPicked.SetActive(false);
         CheckNormal.SetActive(false);
         CheckBackground.SetActive(false);
-        canvas = FindObjectOfType<Canvas>().gameObject;
-
+        uIManager = FindObjectOfType<UIManager>();
+        page = transform.parent.GetComponent<Page>();
+    }
+    void Start()
+    {
         if (bought)
         {
             normalPriceDisplay.text = null;
             premiumPriceDisplay.text = null;
+        }
+        if (picked)
+        {
+            ItemReplacement();
         }
     }
 
@@ -88,7 +91,7 @@ public class ItemDisplay : MonoBehaviour
             premiumPriceDisplay.text = null;
             normalCurrencyIcon.SetActive(false);
             premiumlCurrencyIcon.SetActive(false);
-
+            gameManager.SaveContent();
             return currency;
         }
         else
@@ -98,30 +101,25 @@ public class ItemDisplay : MonoBehaviour
         }
     }
 
-    public void ConfirmPurchase()
-    {
-        if (purchaseConfirmationDisplay == null)
-        {
-            purchaseConfirmationDisplay = Instantiate(purchaseConfirmation, this.transform);
-        }
-
-    }
-
     public void buttonBindingNormal()
     {
-        purchaseConfirmation.transform.Find("Confirm").GetComponent<Button>().onClick.AddListener(delegate { BuyItemNormal(); });
-        purchaseConfirmation.transform.Find("Deny").GetComponent<Button>().onClick.AddListener(delegate { destroyConfirmation(); });
+        uIManager.displayConfirmation();
+        uIManager.purchaseConfirmation.transform.Find("Confirm").GetComponent<Button>().onClick.AddListener(BuyItemNormal);
+        uIManager.purchaseConfirmation.transform.Find("Deny").GetComponent<Button>().onClick.AddListener(destroyConfirmation);
     }
 
     public void buttonBindingPremium()
     {
-        purchaseConfirmation.transform.Find("Confirm").GetComponent<Button>().onClick.AddListener(() => { BuyItemPremium(); });
-        purchaseConfirmation.transform.Find("Deny").GetComponent<Button>().onClick.AddListener(delegate { destroyConfirmation(); });
+        uIManager.displayConfirmation();
+        uIManager.purchaseConfirmation.transform.Find("Confirm").GetComponent<Button>().onClick.AddListener(BuyItemPremium);
+        uIManager.purchaseConfirmation.transform.Find("Deny").GetComponent<Button>().onClick.AddListener(destroyConfirmation);
     }
 
     private void destroyConfirmation()
     {
-        Destroy(purchaseConfirmationDisplay);
+        uIManager.purchaseConfirmation.transform.Find("Confirm").GetComponent<Button>().onClick.RemoveAllListeners();
+        uIManager.purchaseConfirmation.transform.Find("Deny").GetComponent<Button>().onClick.RemoveAllListeners();
+        uIManager.hideConfirmation();
     }
 
     public void BuyItemPremium()        //Buys the item for premium currency
@@ -149,24 +147,20 @@ public class ItemDisplay : MonoBehaviour
     {
         if (bought)
         {
-            if (transform.parent.parent.name == "CharacterPage")
+            if (transform.parent.name == "CharacterPage")
             {
                 Destroy(gameManager.currentCharacter);
                 gameManager.currentCharacter = Instantiate(item);
             }
-            else if (transform.parent.parent.name == "ArenaPage")
+            else if (transform.parent.name == "ArenaPage")
             {
                 Destroy(gameManager.currentArena);
                 gameManager.currentArena = Instantiate(item);
             }
-            else if (transform.parent.parent.name == "WatcherPage")
+            else if (transform.parent.name == "WatcherPage")
             {
                 Destroy(gameManager.currentWatcher);
                 gameManager.currentWatcher = Instantiate(item);
-            }
-            else if (transform.parent.parent.name == "BallPage")
-            {
-                gameManager.currentBall = item;
             }
         }
         else

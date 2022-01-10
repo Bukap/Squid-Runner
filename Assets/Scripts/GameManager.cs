@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] characters;       //An array of all NPC characters
 
     #region Green Frequency
-    [SerializeField] private float shortestTime;    // Defines the shortest possible time before changing the green value
+    [SerializeField] public float shortestTime;    // Defines the shortest possible time before changing the green value
     [SerializeField] private float longestTime;     // Defines the longest possible time before changing the green value
     [SerializeField] private float timeToSwitch;    // It is the value of the randomly generated number between the two abowe
     [SerializeField] private float timer;           // The clock that is counted up to the timeToSwitch, then it resets and the timeToSwitch value is generated again
@@ -45,15 +45,18 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
         instantiateObjects();
+        getComponents();
+        LoadContent();
     }
 
     void Start()
     {
-        getComponents();
+        
         finish = true;
         green = true;
-        LoadContent();
     }
 
     void Update()
@@ -88,11 +91,13 @@ public class GameManager : MonoBehaviour
             ball.transform.position = currentCharacter.transform.position + (new Vector3(distance, hight));
             scoreManager.RestartScore();
         }
+        SaveContent();
     }       // If !green and the player moves the defeat bool is set to true and a ball is created that hits the player
 
     public void Victory()
     {
         finish = true;
+        SaveContent();
         //scoreManager.AddToTotalScore();
     }       // Once the player will cross the finish line the function is called
 

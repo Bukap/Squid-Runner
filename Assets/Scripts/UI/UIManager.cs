@@ -32,6 +32,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject shopArenaPageButton;
     [SerializeField] private GameObject shopCharacterPageButton;
     [SerializeField] private GameObject shopWatcherPageButton;
+    [SerializeField] public GameObject purchaseConfirmation;
 
     [SerializeField] private PostProcessVolume blur;
     #endregion
@@ -59,6 +60,8 @@ public class UIManager : MonoBehaviour
 
         victoryDefeat = replayForMore.GetComponentInChildren<Text>();
         blur.weight = 1;
+
+        purchaseConfirmation.gameObject.SetActive(false);
     }
 
 
@@ -182,7 +185,6 @@ public class UIManager : MonoBehaviour
     {
         UIState = 1; 
         gameManager.restart();
-        gameManager.SaveContent();
     }       //Button function for starting the game
 
     public void RestartGame()
@@ -190,8 +192,6 @@ public class UIManager : MonoBehaviour
         UIState = 1;
         scoreManager.AddToTotalScore();
         gameManager.restart();
-        gameManager.SaveContent();
-
     }       //Button function for restarting the game
 
     public void PlayForMore()
@@ -199,15 +199,11 @@ public class UIManager : MonoBehaviour
         UIState = 1;
         scoreManager.ReplayForMore();
         gameManager.restart();
-        gameManager.SaveContent();
-
     }
 
     public void EnterShop()
     {
         UIState = 2;
-        gameManager.SaveContent();
-
     }
 
     public void EnterMenu()
@@ -217,8 +213,6 @@ public class UIManager : MonoBehaviour
         characterControl.camera.transform.position = characterControl.cameraPositionElse;
         characterControl.camera.transform.LookAt(gameManager.currentArena.transform.position);
         gameManager.restart();
-        gameManager.SaveContent();
-
     }
 
     public void EnterArenaPage()
@@ -228,8 +222,6 @@ public class UIManager : MonoBehaviour
         shopCharacterPage.gameObject.SetActive(false);
         shopWatcherPage.gameObject.SetActive(false);
         characterControl.camera.transform.position = characterControl.cameraPositionElse;
-        gameManager.SaveContent();
-
     }
     public void EnterPremiumPage()
     {
@@ -237,8 +229,6 @@ public class UIManager : MonoBehaviour
         shopPremiumPage.gameObject.SetActive(true);
         shopCharacterPage.gameObject.SetActive(false);
         shopWatcherPage.gameObject.SetActive(false);
-        gameManager.SaveContent();
-
     }
     public void EnterCharacterPage()
     {
@@ -246,7 +236,6 @@ public class UIManager : MonoBehaviour
         shopPremiumPage.gameObject.SetActive(false);
         shopCharacterPage.gameObject.SetActive(true);
         shopWatcherPage.gameObject.SetActive(false);
-        gameManager.SaveContent();
 
     }
     public void EnterWatcherPage()
@@ -255,6 +244,15 @@ public class UIManager : MonoBehaviour
         shopPremiumPage.gameObject.SetActive(false);
         shopCharacterPage.gameObject.SetActive(false);
         shopWatcherPage.gameObject.SetActive(true);
-        gameManager.SaveContent();
+    }
+
+    public void hideConfirmation()
+    {
+        purchaseConfirmation.gameObject.SetActive(false);
+    }
+
+    public void displayConfirmation()
+    {
+        purchaseConfirmation.gameObject.SetActive(true);
     }
 }

@@ -6,12 +6,6 @@ public class PremiumItem : MonoBehaviour
 {
 
 
-
-
-
-
-
-
     void Start()
     {
         

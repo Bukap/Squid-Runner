@@ -25,6 +25,7 @@ public class Watcher : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(gameManager.currentWatcher != null)
         rotate();
     }
 
@@ -32,27 +33,23 @@ public class Watcher : MonoBehaviour
     {
         float time = Time.time;
         
-
         if (gameManager.green)      //Rotates the head depending on the current bool methode
         {
-            //Quaternion desiredRotation = Quaternion.LookRotation(Vector3.forward, gameManager.currentCharacter.transform.position - watcherObject.transform.position);
-            //desiredRotation = Quaternion.Euler(0, -90, 0);
-            // watcherObject.transform.rotation = Quaternion.RotateTowards(watcherObject.transform.rotation, desiredRotation, rotationSpeed );
             animator.SetBool("Green", true);
         }
         else
         {
-            //Quaternion desiredRotation = Quaternion.LookRotation(Vector3.forward, (watcherObject.transform.position + Vector3.forward) - watcherObject.transform.position);
-            //desiredRotation = Quaternion.Euler(0, 90, 0);
-            //watcherObject.transform.rotation = Quaternion.RotateTowards(watcherObject.transform.rotation, desiredRotation, rotationSpeed );
             animator.SetBool("Green", false);
         }
 
         AnimatorClipInfo[] currentClip = this.animator.GetCurrentAnimatorClipInfo(0);
 
-        if (currentClip[0].clip.name == "RotateToRed" && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)     //Gives true or false based on the current rotation    
-            isWatching = true;                             
-        else                                                
-            isWatching = false;
+        if (time > gameManager.shortestTime)
+        {
+            if (currentClip[0].clip.name == "RotateToRed" && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)     //Gives true or false based on the current rotation    
+                isWatching = true;
+            else
+                isWatching = false;
+        }
     }
 }
