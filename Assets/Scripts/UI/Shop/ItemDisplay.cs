@@ -47,6 +47,8 @@ public class ItemDisplay : MonoBehaviour
         {
             normalPriceDisplay.text = null;
             premiumPriceDisplay.text = null;
+            normalCurrencyIcon.SetActive(false);
+            premiumlCurrencyIcon.SetActive(false);
         }
         if (picked)
         {
@@ -79,6 +81,7 @@ public class ItemDisplay : MonoBehaviour
             CheckAndPicked.SetActive(false);
             CheckNormal.SetActive(false);
         }
+        
     }
 
     private int BuyItem(int currency, int price) 

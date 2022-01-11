@@ -9,11 +9,13 @@ public class Page : MonoBehaviour
     public List<bool> isBought;
     public List<bool> isPicked;
 
-
-
     void Start()
     {
         PageLoad();
+    }
+
+    void FixedUpdate()
+    {
         PageUpdate();
     }
 

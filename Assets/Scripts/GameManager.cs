@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
         instantiateObjects();
         getComponents();
         LoadContent();
+
     }
 
     void Start()
