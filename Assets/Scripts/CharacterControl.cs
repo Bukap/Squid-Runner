@@ -66,7 +66,7 @@ public class CharacterControl : MonoBehaviour
             accelerating();
             animator.speed = speed / topSpeed;
         }
-        else if (animator.speed<0.1 && gameManager.UImanager.UIState != 1)
+        else if (animator.speed<0.1 || gameManager.UImanager.UIState != 1 || gameManager.finish)
             animator.speed = 0;
 
     }
