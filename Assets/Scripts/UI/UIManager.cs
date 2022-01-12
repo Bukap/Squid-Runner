@@ -10,7 +10,8 @@ public class UIManager : MonoBehaviour
     private GameManager gameManager;
     private ScoreManager scoreManager;
     private CharacterControl characterControl;
-    
+    private AudioManager audioManager;
+
     #region UIobjects
     [SerializeField] private GameObject gameCurrency;
     [SerializeField] private GameObject premiumCurrency;
@@ -52,6 +53,7 @@ public class UIManager : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         scoreManager = FindObjectOfType<ScoreManager>();
         characterControl = FindObjectOfType<CharacterControl>();
+        audioManager = FindObjectOfType<AudioManager>();
 
         currentCurrencyText = currentCurrency.GetComponentInChildren<Text>();
         gameCurrencyText = gameCurrency.GetComponentInChildren<Text>();
@@ -112,6 +114,8 @@ public class UIManager : MonoBehaviour
         shopWatcherPageButton.gameObject.SetActive(false);
 
         blur.weight = 1;
+
+        audioManager.ChangeTrack(audioManager.sourceMusicGame, audioManager.sourceMusicMenu);
     }
 
     private void gameplayDisplayUI()
@@ -159,6 +163,7 @@ public class UIManager : MonoBehaviour
             }
             blur.weight = 1;
         }
+        audioManager.ChangeTrack(audioManager.sourceMusicMenu, audioManager.sourceMusicGame);
     }
 
     private void shopDisplayUI()
@@ -185,6 +190,7 @@ public class UIManager : MonoBehaviour
     {
         UIState = 1; 
         gameManager.restart();
+        audioManager.PlaySFX(audioManager.buttonPressSFX);
     }       //Button function for starting the game
 
     public void RestartGame()
@@ -192,6 +198,7 @@ public class UIManager : MonoBehaviour
         UIState = 1;
         scoreManager.AddToTotalScore();
         gameManager.restart();
+        audioManager.PlaySFX(audioManager.buttonPressSFX);
     }       //Button function for restarting the game
 
     public void PlayForMore()
@@ -199,11 +206,13 @@ public class UIManager : MonoBehaviour
         UIState = 1;
         scoreManager.ReplayForMore();
         gameManager.restart();
+        audioManager.PlaySFX(audioManager.buttonPressSFX);
     }
 
     public void EnterShop()
     {
         UIState = 2;
+        audioManager.PlaySFX(audioManager.buttonPressSFX);
     }
 
     public void EnterMenu()
@@ -213,6 +222,7 @@ public class UIManager : MonoBehaviour
         characterControl.camera.transform.position = characterControl.cameraPositionElse;
         characterControl.camera.transform.LookAt(gameManager.currentArena.transform.position);
         gameManager.restart();
+        audioManager.PlaySFX(audioManager.buttonPressSFX);
     }
 
     public void EnterArenaPage()
@@ -222,6 +232,7 @@ public class UIManager : MonoBehaviour
         shopCharacterPage.gameObject.SetActive(false);
         shopWatcherPage.gameObject.SetActive(false);
         characterControl.camera.transform.position = characterControl.cameraPositionElse;
+        audioManager.PlaySFX(audioManager.buttonPressSFX);
     }
     public void EnterPremiumPage()
     {
@@ -229,6 +240,7 @@ public class UIManager : MonoBehaviour
         shopPremiumPage.gameObject.SetActive(true);
         shopCharacterPage.gameObject.SetActive(false);
         shopWatcherPage.gameObject.SetActive(false);
+        audioManager.PlaySFX(audioManager.buttonPressSFX);
     }
     public void EnterCharacterPage()
     {
@@ -236,6 +248,7 @@ public class UIManager : MonoBehaviour
         shopPremiumPage.gameObject.SetActive(false);
         shopCharacterPage.gameObject.SetActive(true);
         shopWatcherPage.gameObject.SetActive(false);
+        audioManager.PlaySFX(audioManager.buttonPressSFX);
 
     }
     public void EnterWatcherPage()
@@ -244,15 +257,18 @@ public class UIManager : MonoBehaviour
         shopPremiumPage.gameObject.SetActive(false);
         shopCharacterPage.gameObject.SetActive(false);
         shopWatcherPage.gameObject.SetActive(true);
+        audioManager.PlaySFX(audioManager.buttonPressSFX);
     }
 
     public void hideConfirmation()
     {
         purchaseConfirmation.gameObject.SetActive(false);
+        audioManager.PlaySFX(audioManager.buttonPressSFX);
     }
 
     public void displayConfirmation()
     {
         purchaseConfirmation.gameObject.SetActive(true);
+        audioManager.PlaySFX(audioManager.buttonPressSFX);
     }
 }

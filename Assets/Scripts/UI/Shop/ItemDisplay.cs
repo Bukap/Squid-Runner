@@ -26,7 +26,7 @@ public class ItemDisplay : MonoBehaviour
 
     private GameManager gameManager;
     private UIManager uIManager;
-    private Page page;
+    private AudioManager audioManager;
 
     void Awake()
     {
@@ -39,7 +39,7 @@ public class ItemDisplay : MonoBehaviour
         CheckNormal.SetActive(false);
         CheckBackground.SetActive(false);
         uIManager = FindObjectOfType<UIManager>();
-        page = transform.parent.GetComponent<Page>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
     void Start()
     {
@@ -95,6 +95,7 @@ public class ItemDisplay : MonoBehaviour
             normalCurrencyIcon.SetActive(false);
             premiumlCurrencyIcon.SetActive(false);
             gameManager.SaveContent();
+            audioManager.PlaySFX(audioManager.purchaseConfirmationSFX);
             return currency;
         }
         else

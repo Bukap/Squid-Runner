@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.49780262, g: 0.49780262, b: 0.49780262, a: 1}
+  m_IndirectSpecularColor: {r: 0.57215655, g: 0.7818177, b: 0.8677964, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -602,6 +602,17 @@ MonoBehaviour:
   CharacterPage: {fileID: 2074871104}
   WatcherPage: {fileID: 5521546904958924096}
   ArenaPage: {fileID: 5727171749642845929}
+--- !u!114 &838715621 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9131393018502563313, guid: 76e01452dba33474c8d2d604f1df4e5c, type: 3}
+  m_PrefabInstance: {fileID: 7589132730082701376}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a1bedd181ec1b243b81931b47f142b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &868133440 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2021473455665887814, guid: 8612590e54e7a25459b6ccbc5c7f3054, type: 3}
@@ -857,6 +868,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 743945234}
     m_Modifications:
+    - target: {fileID: 1381898618049191141, guid: 0d04f1296aa9bec4c8e9418f87884ab2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 838715621}
     - target: {fileID: 2110188342387456195, guid: 0d04f1296aa9bec4c8e9418f87884ab2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -941,6 +956,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2355910354468569481, guid: 0d04f1296aa9bec4c8e9418f87884ab2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1002314541381079101, guid: 81f8daa00d554af4eb4984429c6e0b34, type: 3}
     - target: {fileID: 7382978712694810780, guid: 0d04f1296aa9bec4c8e9418f87884ab2, type: 3}
       propertyPath: m_Name
       value: OptionsButton
@@ -1184,6 +1203,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5701329617136243888, guid: bfe7c9418f366c24093745d7ef1cd9e7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -349501769233167598, guid: 81f8daa00d554af4eb4984429c6e0b34, type: 3}
     - target: {fileID: 5852312835793857258, guid: bfe7c9418f366c24093745d7ef1cd9e7, type: 3}
       propertyPath: m_Name
       value: PremiumCurrency

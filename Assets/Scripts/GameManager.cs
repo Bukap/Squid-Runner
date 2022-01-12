@@ -91,6 +91,7 @@ public class GameManager : MonoBehaviour
             ball = Instantiate(currentBall);
             ball.transform.position = currentCharacter.transform.position + (new Vector3(distance, hight));
             scoreManager.RestartScore();
+            characterControl.speed = 0;
         }
         SaveContent();
     }       // If !green and the player moves the defeat bool is set to true and a ball is created that hits the player
@@ -99,6 +100,7 @@ public class GameManager : MonoBehaviour
     {
         finish = true;
         SaveContent();
+        characterControl.speed = 0;
         //scoreManager.AddToTotalScore();
     }       // Once the player will cross the finish line the function is called
 
@@ -135,7 +137,6 @@ public class GameManager : MonoBehaviour
         #region scoreManagers accesess
         scoreManager.gameManager = this.GetComponent<GameManager>();
         #endregion
-
         #region watcher accesses
         watcher.gameManager = this.GetComponent<GameManager>();
         #endregion
