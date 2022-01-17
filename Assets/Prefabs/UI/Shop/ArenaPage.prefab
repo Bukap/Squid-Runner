@@ -70,6 +70,14 @@ PrefabInstance:
       propertyPath: item
       value: 
       objectReference: {fileID: 8781713216511309306, guid: 9ea74102313e0da488a6ba8e7ab4f8c8, type: 3}
+    - target: {fileID: 2811977224184295767, guid: cfe123de897764546a41e7897e9c1f68, type: 3}
+      propertyPath: normalPrice
+      value: 1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811977224184295767, guid: cfe123de897764546a41e7897e9c1f68, type: 3}
+      propertyPath: itemOverview
+      value: 
+      objectReference: {fileID: 21300000, guid: 6e51b169bfd10c8448433ea1007f5d72, type: 3}
     - target: {fileID: 6751381994899513341, guid: cfe123de897764546a41e7897e9c1f68, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -193,6 +201,14 @@ PrefabInstance:
       propertyPath: bought
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2811977224184295767, guid: cfe123de897764546a41e7897e9c1f68, type: 3}
+      propertyPath: normalPrice
+      value: 1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811977224184295767, guid: cfe123de897764546a41e7897e9c1f68, type: 3}
+      propertyPath: itemOverview
+      value: 
+      objectReference: {fileID: 21300000, guid: b2dc9ddb29ac5ae4dbc0d90b9d17bfdc, type: 3}
     - target: {fileID: 2811977224184295767, guid: cfe123de897764546a41e7897e9c1f68, type: 3}
       propertyPath: usedCurrently
       value: 1

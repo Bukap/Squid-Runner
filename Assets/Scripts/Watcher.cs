@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Watcher : MonoBehaviour
 {   
-    [SerializeField] private float rotationSpeed;
-
     private GameObject watcherObject;
     private Animator animator;
     private Animation anim;
@@ -25,7 +23,6 @@ public class Watcher : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(gameManager.currentWatcher != null)
         rotate();
     }
 

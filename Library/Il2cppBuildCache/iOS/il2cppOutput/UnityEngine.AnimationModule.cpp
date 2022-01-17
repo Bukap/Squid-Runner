@@ -4038,6 +4038,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AnimatorClipInfoU5BU5D_tCB3D927F30A1769FAEA21
 	AnimatorClipInfoU5BU5D_tCB3D927F30A1769FAEA216264EE98EFFDA4E5DF2* icallRetVal = _il2cpp_icall_func(__this, ___layerIndex0);
 	return icallRetVal;
 }
+// System.Single UnityEngine.Animator::get_speed()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float Animator_get_speed_mA1E16FD07760F406F4415BB55648A87711E5BA1F (Animator_t9DD1D43680A61D65A3C98C6EFF559709DC9CE149 * __this, const RuntimeMethod* method)
+{
+	typedef float (*Animator_get_speed_mA1E16FD07760F406F4415BB55648A87711E5BA1F_ftn) (Animator_t9DD1D43680A61D65A3C98C6EFF559709DC9CE149 *);
+	static Animator_get_speed_mA1E16FD07760F406F4415BB55648A87711E5BA1F_ftn _il2cpp_icall_func;
+	if (!_il2cpp_icall_func)
+	_il2cpp_icall_func = (Animator_get_speed_mA1E16FD07760F406F4415BB55648A87711E5BA1F_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.Animator::get_speed()");
+	float icallRetVal = _il2cpp_icall_func(__this);
+	return icallRetVal;
+}
 // System.Void UnityEngine.Animator::set_speed(System.Single)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Animator_set_speed_m632FF62E0D6B668C55190B3579B12684316C4041 (Animator_t9DD1D43680A61D65A3C98C6EFF559709DC9CE149 * __this, float ___value0, const RuntimeMethod* method)
 {

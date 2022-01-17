@@ -19,41 +19,46 @@
       "DebugActionIndex": 0
     },
     {
-      "Annotation": "Il2Cpp D:/Projekty/Squid Runner/Library/Il2cppBuildCache/iOS/il2cppOutput",
-      "Action": "\"C:\\Program Files\\Unity\\Hub\\Editor\\2020.2.7f1\\Editor\\Data\\il2cpp/build/deploy/netcoreapp3.1/il2cpp.exe\" --convert-to-cpp --emit-null-checks --enable-array-bounds-check --dotnetprofile=\"unityaot\" --additional-cpp=\"D:/Projekty/Squid Runner/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityClassRegistration.cpp\" --additional-cpp=\"D:/Projekty/Squid Runner/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityICallRegistration.cpp\" --incremental-g-c-time-slice=3 --avoid-dynamic-library-copy --profiler-report --map-file-parser=\"C:/Program Files/Unity/Hub/Editor/2020.2.7f1/Editor/Data/Tools/MapFileParser/MapFileParser.exe\" --directory=\"D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed\" --generatedcppdir=\"D:/Projekty/Squid Runner/Library/Il2cppBuildCache/iOS/il2cppOutput\"",
+      "Annotation": "Il2Cpp C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Library/Il2cppBuildCache/iOS/il2cppOutput",
+      "Action": "\"C:\\Users\\piotr\\Desktop\\Unity Projects\\2019.4.16f1\\2020.2.7f1\\Editor\\Data\\il2cpp/build/deploy/netcoreapp3.1/il2cpp.exe\" --convert-to-cpp --emit-null-checks --enable-array-bounds-check --dotnetprofile=\"unityaot\" --additional-cpp=\"C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityClassRegistration.cpp\" --additional-cpp=\"C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityICallRegistration.cpp\" --incremental-g-c-time-slice=3 --avoid-dynamic-library-copy --profiler-report --map-file-parser=\"C:/Users/piotr/Desktop/Unity Projects/2019.4.16f1/2020.2.7f1/Editor/Data/Tools/MapFileParser/MapFileParser.exe\" --directory=\"C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed\" --generatedcppdir=\"C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Library/Il2cppBuildCache/iOS/il2cppOutput\"",
       "Inputs": [
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/Assembly-CSharp.dll",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/Mono.Security.dll",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/mscorlib.dll",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/System.Configuration.dll",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/System.Core.dll",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/System.dll",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/System.Xml.dll",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/Unity.TextMeshPro.dll",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/UnityEngine.AnimationModule.dll",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/UnityEngine.AudioModule.dll",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/UnityEngine.CoreModule.dll",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/UnityEngine.dll",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/UnityEngine.GameCenterModule.dll",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/UnityEngine.GridModule.dll",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/UnityEngine.IMGUIModule.dll",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/UnityEngine.InputLegacyModule.dll",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/UnityEngine.Physics2DModule.dll",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/UnityEngine.PhysicsModule.dll",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/UnityEngine.SharedInternalsModule.dll",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/UnityEngine.SpriteShapeModule.dll",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/UnityEngine.TextCoreModule.dll",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/UnityEngine.TextRenderingModule.dll",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/UnityEngine.TilemapModule.dll",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/UnityEngine.UI.dll",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/UnityEngine.UIModule.dll",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/UnityEngine.UnityAnalyticsModule.dll",
-        "D:/Projekty/Squid Runner/Temp/StagingArea/Data/Managed/UnityEngine.UnityWebRequestModule.dll"
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/Assembly-CSharp.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/Mono.Security.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/mscorlib.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/System.Configuration.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/System.Core.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/System.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/System.Xml.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/Unity.Postprocessing.Runtime.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/Unity.TextMeshPro.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/UnityEngine.AnimationModule.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/UnityEngine.AudioModule.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/UnityEngine.CoreModule.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/UnityEngine.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/UnityEngine.GameCenterModule.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/UnityEngine.GridModule.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/UnityEngine.IMGUIModule.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/UnityEngine.InputLegacyModule.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/UnityEngine.InputModule.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/UnityEngine.Physics2DModule.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/UnityEngine.PhysicsModule.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/UnityEngine.SharedInternalsModule.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/UnityEngine.SpriteShapeModule.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/UnityEngine.SubsystemsModule.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/UnityEngine.TextCoreModule.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/UnityEngine.TextRenderingModule.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/UnityEngine.TilemapModule.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/UnityEngine.UI.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/UnityEngine.UIModule.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/UnityEngine.UnityAnalyticsModule.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/UnityEngine.UnityWebRequestModule.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/UnityEngine.VRModule.dll",
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Temp/StagingArea/Data/Managed/UnityEngine.XRModule.dll"
       ],
       "Outputs": [],
       "TargetDirectories": [
-        "D:/Projekty/Squid Runner/Library/Il2cppBuildCache/iOS/il2cppOutput"
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Library/Il2cppBuildCache/iOS/il2cppOutput"
       ],
       "PassIndex": 0,
       "Deps": [],
@@ -64,13 +69,13 @@
       "DebugActionIndex": 1
     },
     {
-      "Annotation": "Copy Additional C++ File D:/Projekty/Squid Runner/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp",
-      "Action": "copy \"D:\\Projekty\\Squid Runner\\Library\\Il2cppBuildCache\\iOS\\additionalCppFiles\\UnityClassRegistration.cpp\" \"D:\\Projekty\\Squid Runner\\Library\\Il2cppBuildCache\\iOS\\il2cppOutput\\UnityClassRegistration.cpp\" && copy /b \"D:\\Projekty\\Squid Runner\\Library\\Il2cppBuildCache\\iOS\\il2cppOutput\\UnityClassRegistration.cpp\" +,, \"D:\\Projekty\\Squid Runner\\Library\\Il2cppBuildCache\\iOS\\il2cppOutput\\UnityClassRegistration.cpp\" ",
+      "Annotation": "Copy Additional C++ File C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp",
+      "Action": "copy \"C:\\Users\\piotr\\Desktop\\Unity Projects\\Squid-Runner\\Library\\Il2cppBuildCache\\iOS\\additionalCppFiles\\UnityClassRegistration.cpp\" \"C:\\Users\\piotr\\Desktop\\Unity Projects\\Squid-Runner\\Library\\Il2cppBuildCache\\iOS\\il2cppOutput\\UnityClassRegistration.cpp\" && copy /b \"C:\\Users\\piotr\\Desktop\\Unity Projects\\Squid-Runner\\Library\\Il2cppBuildCache\\iOS\\il2cppOutput\\UnityClassRegistration.cpp\" +,, \"C:\\Users\\piotr\\Desktop\\Unity Projects\\Squid-Runner\\Library\\Il2cppBuildCache\\iOS\\il2cppOutput\\UnityClassRegistration.cpp\" ",
       "Inputs": [
-        "D:/Projekty/Squid Runner/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityClassRegistration.cpp"
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityClassRegistration.cpp"
       ],
       "Outputs": [
-        "D:/Projekty/Squid Runner/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp"
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp"
       ],
       "TargetDirectories": [],
       "PassIndex": 0,
@@ -84,13 +89,13 @@
       "DebugActionIndex": 2
     },
     {
-      "Annotation": "Copy Additional C++ File D:/Projekty/Squid Runner/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityICallRegistration.cpp",
-      "Action": "copy \"D:\\Projekty\\Squid Runner\\Library\\Il2cppBuildCache\\iOS\\additionalCppFiles\\UnityICallRegistration.cpp\" \"D:\\Projekty\\Squid Runner\\Library\\Il2cppBuildCache\\iOS\\il2cppOutput\\UnityICallRegistration.cpp\" && copy /b \"D:\\Projekty\\Squid Runner\\Library\\Il2cppBuildCache\\iOS\\il2cppOutput\\UnityICallRegistration.cpp\" +,, \"D:\\Projekty\\Squid Runner\\Library\\Il2cppBuildCache\\iOS\\il2cppOutput\\UnityICallRegistration.cpp\" ",
+      "Annotation": "Copy Additional C++ File C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityICallRegistration.cpp",
+      "Action": "copy \"C:\\Users\\piotr\\Desktop\\Unity Projects\\Squid-Runner\\Library\\Il2cppBuildCache\\iOS\\additionalCppFiles\\UnityICallRegistration.cpp\" \"C:\\Users\\piotr\\Desktop\\Unity Projects\\Squid-Runner\\Library\\Il2cppBuildCache\\iOS\\il2cppOutput\\UnityICallRegistration.cpp\" && copy /b \"C:\\Users\\piotr\\Desktop\\Unity Projects\\Squid-Runner\\Library\\Il2cppBuildCache\\iOS\\il2cppOutput\\UnityICallRegistration.cpp\" +,, \"C:\\Users\\piotr\\Desktop\\Unity Projects\\Squid-Runner\\Library\\Il2cppBuildCache\\iOS\\il2cppOutput\\UnityICallRegistration.cpp\" ",
       "Inputs": [
-        "D:/Projekty/Squid Runner/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityICallRegistration.cpp"
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityICallRegistration.cpp"
       ],
       "Outputs": [
-        "D:/Projekty/Squid Runner/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityICallRegistration.cpp"
+        "C:/Users/piotr/Desktop/Unity Projects/Squid-Runner/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityICallRegistration.cpp"
       ],
       "TargetDirectories": [],
       "PassIndex": 0,

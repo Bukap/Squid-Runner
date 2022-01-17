@@ -50,8 +50,8 @@ MonoBehaviour:
   scoreManager: {fileID: 0}
   shopManager: {fileID: 0}
   characters: []
-  shortestTime: 4
-  longestTime: 10
+  shortestTime: 3
+  longestTime: 7
   timeToSwitch: 2
   timer: 0
   CrossLine: 0
@@ -61,7 +61,7 @@ MonoBehaviour:
   restartPosition: {fileID: 0}
   countDown: 3
   NormalCurrency: 0
-  PremiumCurrency: 600
+  PremiumCurrency: 0
   currentCharacter: {fileID: 7763792593216872700, guid: b6d4e5ae0d0b93b4a98b8a8cbf2b64a2, type: 3}
   currentArena: {fileID: 8781713216511309306, guid: 8dea7d320c60eb54f8ecdc1f1560f3e2, type: 3}
   currentWatcher: {fileID: 8770347874018859448, guid: b7f9e336780ae2b4b9ff2649908d46fc, type: 3}

@@ -3,11 +3,9 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - AudioManager
     - BallThrow
-    - ChangeScene
     - CharacterControl
     - GameManager
     - ItemDisplay
-    - LogoDisplay
     - Page
     - PremiumItem
     - ScoreManager
@@ -76,6 +74,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 49
+      Script: {instanceID: 0}
     - Class: 54
       Script: {instanceID: 0}
     - Class: 64
@@ -109,7 +109,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1662}
     - Class: 114
+      Script: {instanceID: 1804}
+    - Class: 114
       Script: {instanceID: 1848}
+    - Class: 114
+      Script: {instanceID: 2054}
     - Class: 114
       Script: {instanceID: 2060}
     - Class: 114
@@ -141,9 +145,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3686}
     - Class: 114
+      Script: {instanceID: 3702}
+    - Class: 114
+      Script: {instanceID: 3784}
+    - Class: 114
       Script: {instanceID: 3850}
     - Class: 114
       Script: {instanceID: 3888}
+    - Class: 114
+      Script: {instanceID: 4044}
     - Class: 114
       Script: {instanceID: 4298}
     - Class: 114
@@ -161,63 +171,6 @@ ScriptsOnlyBuild:
     - Class: 196
       Script: {instanceID: 0}
     - Class: 213
-      Script: {instanceID: 0}
-    - Class: 222
-      Script: {instanceID: 0}
-    - Class: 223
-      Script: {instanceID: 0}
-    - Class: 224
-      Script: {instanceID: 0}
-    Assets/Scenes/LoadingScrene.unity:
-    - Class: 1
-      Script: {instanceID: 0}
-    - Class: 4
-      Script: {instanceID: 0}
-    - Class: 20
-      Script: {instanceID: 0}
-    - Class: 21
-      Script: {instanceID: 0}
-    - Class: 28
-      Script: {instanceID: 0}
-    - Class: 48
-      Script: {instanceID: 0}
-    - Class: 49
-      Script: {instanceID: 0}
-    - Class: 81
-      Script: {instanceID: 0}
-    - Class: 104
-      Script: {instanceID: 0}
-    - Class: 114
-      Script: {instanceID: 1538}
-    - Class: 114
-      Script: {instanceID: 1804}
-    - Class: 114
-      Script: {instanceID: 2054}
-    - Class: 114
-      Script: {instanceID: 2368}
-    - Class: 114
-      Script: {instanceID: 2480}
-    - Class: 114
-      Script: {instanceID: 2630}
-    - Class: 114
-      Script: {instanceID: 2800}
-    - Class: 114
-      Script: {instanceID: 3580}
-    - Class: 114
-      Script: {instanceID: 3702}
-    - Class: 114
-      Script: {instanceID: 3784}
-    - Class: 114
-      Script: {instanceID: 3938}
-    - Class: 114
-      Script: {instanceID: 4044}
-    - Class: 115
-      Script: {instanceID: 0}
-    - Class: 128
-      Script: {instanceID: 0}
-    - Class: 157
-      Script: {instanceID: 0}
-    - Class: 196
       Script: {instanceID: 0}
     - Class: 222
       Script: {instanceID: 0}
@@ -462,7 +415,7 @@ ScriptsOnlyBuild:
     className: TMP_Dropdown
   - hash:
       serializedVersion: 2
-      Hash: 2bb2a53bac4cbb6e549031cedd3ee5cf
+      Hash: 62e040979f1bcc5cfdb183bf34b809bf
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Watcher
@@ -1062,6 +1015,5 @@ ScriptsOnlyBuild:
     className: AmbientOcclusion
   platform: 13
   scenePathNames:
-  - Assets/Scenes/LoadingScrene.unity
   - Assets/Scenes/Game.unity
-  playerPath: C:/Users/Buka/Desktop/WRIIII.apk
+  playerPath: C:/Users/piotr/Desktop/Squid Run.apk

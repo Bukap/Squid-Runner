@@ -54,6 +54,7 @@ public class ItemDisplay : MonoBehaviour
         {
             ItemReplacement();
         }
+        gameManager.Victory();
     }
 
     void FixedUpdate()

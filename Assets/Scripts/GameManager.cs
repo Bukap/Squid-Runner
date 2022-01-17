@@ -50,14 +50,13 @@ public class GameManager : MonoBehaviour
         instantiateObjects();
         getComponents();
         LoadContent();
-
     }
 
     void Start()
     {
-        
         finish = true;
         green = true;
+        Victory();
     }
 
     void Update()

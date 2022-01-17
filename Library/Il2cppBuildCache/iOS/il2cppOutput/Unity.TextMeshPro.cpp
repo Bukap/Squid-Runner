@@ -40119,7 +40119,7 @@ IL_00e2:
 		Texture2D_t9B604D0D8E28032123641A7E7338FA872E2698BF * L_49 = (L_46)->GetAt(static_cast<il2cpp_array_size_t>(L_48));
 		NullCheck(L_49);
 		bool L_50;
-		L_50 = VirtFuncInvoker0< bool >::Invoke(8 /* System.Boolean UnityEngine.Texture::get_isReadable() */, L_49);
+		L_50 = VirtFuncInvoker0< bool >::Invoke(10 /* System.Boolean UnityEngine.Texture::get_isReadable() */, L_49);
 		if (L_50)
 		{
 			goto IL_014b;
@@ -41853,7 +41853,7 @@ IL_0034:
 		Texture2D_t9B604D0D8E28032123641A7E7338FA872E2698BF * L_14 = (L_11)->GetAt(static_cast<il2cpp_array_size_t>(L_13));
 		NullCheck(L_14);
 		bool L_15;
-		L_15 = VirtFuncInvoker0< bool >::Invoke(8 /* System.Boolean UnityEngine.Texture::get_isReadable() */, L_14);
+		L_15 = VirtFuncInvoker0< bool >::Invoke(10 /* System.Boolean UnityEngine.Texture::get_isReadable() */, L_14);
 		// if (setAtlasSizeToZero)
 		bool L_16 = ___setAtlasSizeToZero0;
 		if (!L_16)
